@@ -4,11 +4,11 @@
   "description": "Send new hire email and add to Data Manager",
   "main": "Main.xaml",
   "dependencies": {
-    "UiPath.DataService.Activities": "[25.9.0]",
+    "UiPath.DataService.Activities": "[24.11.1]",
     "UiPath.Excel.Activities": "[2.24.4]",
     "UiPath.Mail.Activities": "[2.4.10]",
     "UiPath.MicrosoftOffice365.Activities": "[3.4.10]",
-    "UiPath.System.Activities": "[24.10.7]"
+    "UiPath.System.Activities": "[24.10.8]"
   },
   "webServices": [],
   "entitiesStores": [

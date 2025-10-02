@@ -107,7 +107,7 @@
       <AssemblyReference>DataService.NH02_ProcessNewEmployee</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="962,2173" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1251,2512" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="QueueItemContent" />
       <Variable x:TypeArguments="n:NewHireManagementEmployee" Name="CreatedRecord" />
@@ -119,7 +119,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="468,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process for &quot; + in_TransactionItem.SpecificContent(&quot;EmployeeID&quot;).ToString]" />
-    <If Condition="[Cbool(in_Config(&quot;ProcessTestMode&quot;))]" DisplayName="If Test mode" sap:VirtualizedContainerService.HintSize="468,483" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[Cbool(in_Config(&quot;ProcessTestMode&quot;))]" DisplayName="If Test mode" sap:VirtualizedContainerService.HintSize="468,660" sap2010:WorkflowViewState.IdRef="If_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -127,13 +127,18 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,224" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,401" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,164" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;Running for test mode user: &quot; + in_Config(&quot;TestModeUser&quot;).ToString]" />
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,173" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;Running for test mode user: &quot; + in_Config(&quot;TestModeUser&quot;).ToString]" />
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SendOnboardingEmail - Invoke Workflow File (Workflows\SendOnboardingEmail.xaml)" sap:VirtualizedContainerService.HintSize="382,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Workflows\SendOnboardingEmail.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ToAddress" />
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
         </Sequence>
       </If.Then>
       <If.Else>
@@ -146,66 +151,77 @@
         </Sequence>
       </If.Else>
     </If>
-    <uda:CreateEntityRecord x:TypeArguments="n:NewHireManagementEmployee" InputEntity="{x:Null}" IsInRecordView="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Create Entity Record" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="468,664" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_2" InputEntityInFieldView="[new NH02_ProcessNewEmployee.NewHireManagementEmployee() With {  .EmployeeID = in_TransactionItem.SpecificContent(&quot;EmployeeID&quot;).ToString,  .CostCenter = in_TransactionItem.SpecificContent(&quot;CostCenter&quot;).ToString,  .Email = in_TransactionItem.SpecificContent(&quot;Email&quot;).ToString,  .HireDate = Date.Parse(in_TransactionItem.SpecificContent(&quot;HireDate&quot;).ToString),  .JobTitle = in_TransactionItem.SpecificContent(&quot;JobTitle&quot;).ToString,  .Manager = in_TransactionItem.SpecificContent(&quot;Manager&quot;).ToString,  .ManagerEmail = &quot;ioan.suciu29@outlook.com&quot;,  .Name = in_TransactionItem.SpecificContent(&quot;Name&quot;).ToString,  .Organization = in_TransactionItem.SpecificContent(&quot;Organization&quot;).ToString }]" OutputEntity="[CreatedRecord]" TimeoutInMs="30000">
-      <uda:CreateEntityRecord.State>
-        <udam:RecordState RequiredFieldCount="1">
-          <udam:RecordState.SelectedFields>
-            <scg:List x:TypeArguments="udam:DynamicEntityField" Capacity="10">
-              <udam:DynamicEntityField Id="d1b1668d-3e9f-f011-b3cd-002248a46af2" IsRequired="True" Name="EmployeeID">
-                <udam:DynamicEntityField.ArgumentValue>
-                  <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("EmployeeID").ToString]</InArgument>
-                </udam:DynamicEntityField.ArgumentValue>
-              </udam:DynamicEntityField>
-              <udam:DynamicEntityField Id="d9b1668d-3e9f-f011-b3cd-002248a46af2" Name="BusinessSite">
-                <udam:DynamicEntityField.ArgumentValue>
-                  <InArgument x:TypeArguments="x:String" />
-                </udam:DynamicEntityField.ArgumentValue>
-              </udam:DynamicEntityField>
-              <udam:DynamicEntityField Id="d8b1668d-3e9f-f011-b3cd-002248a46af2" Name="CostCenter">
-                <udam:DynamicEntityField.ArgumentValue>
-                  <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("CostCenter").ToString]</InArgument>
-                </udam:DynamicEntityField.ArgumentValue>
-              </udam:DynamicEntityField>
-              <udam:DynamicEntityField Id="d4b1668d-3e9f-f011-b3cd-002248a46af2" Name="Email">
-                <udam:DynamicEntityField.ArgumentValue>
-                  <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Email").ToString]</InArgument>
-                </udam:DynamicEntityField.ArgumentValue>
-              </udam:DynamicEntityField>
-              <udam:DynamicEntityField Id="d2b1668d-3e9f-f011-b3cd-002248a46af2" Name="HireDate">
-                <udam:DynamicEntityField.ArgumentValue>
-                  <InArgument x:TypeArguments="s:DateTime">[Date.Parse(in_TransactionItem.SpecificContent("HireDate").ToString)]</InArgument>
-                </udam:DynamicEntityField.ArgumentValue>
-              </udam:DynamicEntityField>
-              <udam:DynamicEntityField Id="d3b1668d-3e9f-f011-b3cd-002248a46af2" Name="JobTitle">
-                <udam:DynamicEntityField.ArgumentValue>
-                  <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("JobTitle").ToString]</InArgument>
-                </udam:DynamicEntityField.ArgumentValue>
-              </udam:DynamicEntityField>
-              <udam:DynamicEntityField Id="d5b1668d-3e9f-f011-b3cd-002248a46af2" Name="Manager">
-                <udam:DynamicEntityField.ArgumentValue>
-                  <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Manager").ToString]</InArgument>
-                </udam:DynamicEntityField.ArgumentValue>
-              </udam:DynamicEntityField>
-              <udam:DynamicEntityField Id="d6b1668d-3e9f-f011-b3cd-002248a46af2" Name="ManagerEmail">
-                <udam:DynamicEntityField.ArgumentValue>
-                  <InArgument x:TypeArguments="x:String">ioan.suciu29@outlook.com</InArgument>
-                </udam:DynamicEntityField.ArgumentValue>
-              </udam:DynamicEntityField>
-              <udam:DynamicEntityField Id="d0b1668d-3e9f-f011-b3cd-002248a46af2" Name="Name">
-                <udam:DynamicEntityField.ArgumentValue>
-                  <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Name").ToString]</InArgument>
-                </udam:DynamicEntityField.ArgumentValue>
-              </udam:DynamicEntityField>
-              <udam:DynamicEntityField Id="d7b1668d-3e9f-f011-b3cd-002248a46af2" Name="Organization">
-                <udam:DynamicEntityField.ArgumentValue>
-                  <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Organization").ToString]</InArgument>
-                </udam:DynamicEntityField.ArgumentValue>
-              </udam:DynamicEntityField>
-            </scg:List>
-          </udam:RecordState.SelectedFields>
-        </udam:RecordState>
-      </uda:CreateEntityRecord.State>
-    </uda:CreateEntityRecord>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="468,826" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,715" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <uda:CreateEntityRecord x:TypeArguments="n:NewHireManagementEmployee" InputEntity="{x:Null}" IsInRecordView="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Create Entity Record" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="382,655" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_2" InputEntityInFieldView="[new NH02_ProcessNewEmployee.NewHireManagementEmployee() With {  .EmployeeID = in_TransactionItem.SpecificContent(&quot;EmployeeID&quot;).ToString,  .CostCenter = in_TransactionItem.SpecificContent(&quot;CostCenter&quot;).ToString,  .Email = in_TransactionItem.SpecificContent(&quot;Email&quot;).ToString,  .HireDate = Date.Parse(in_TransactionItem.SpecificContent(&quot;HireDate&quot;).ToString),  .JobTitle = in_TransactionItem.SpecificContent(&quot;JobTitle&quot;).ToString,  .Manager = in_TransactionItem.SpecificContent(&quot;Manager&quot;).ToString,  .ManagerEmail = &quot;ioan.suciu29@outlook.com&quot;,  .Name = in_TransactionItem.SpecificContent(&quot;Name&quot;).ToString,  .Organization = in_TransactionItem.SpecificContent(&quot;Organization&quot;).ToString }]" OutputEntity="[CreatedRecord]" TimeoutInMs="30000">
+            <uda:CreateEntityRecord.State>
+              <udam:RecordState RequiredFieldCount="1">
+                <udam:RecordState.SelectedFields>
+                  <scg:List x:TypeArguments="udam:DynamicEntityField" Capacity="10">
+                    <udam:DynamicEntityField Id="d1b1668d-3e9f-f011-b3cd-002248a46af2" IsRequired="True" Name="EmployeeID">
+                      <udam:DynamicEntityField.ArgumentValue>
+                        <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("EmployeeID").ToString]</InArgument>
+                      </udam:DynamicEntityField.ArgumentValue>
+                    </udam:DynamicEntityField>
+                    <udam:DynamicEntityField Id="d9b1668d-3e9f-f011-b3cd-002248a46af2" Name="BusinessSite">
+                      <udam:DynamicEntityField.ArgumentValue>
+                        <InArgument x:TypeArguments="x:String" />
+                      </udam:DynamicEntityField.ArgumentValue>
+                    </udam:DynamicEntityField>
+                    <udam:DynamicEntityField Id="d8b1668d-3e9f-f011-b3cd-002248a46af2" Name="CostCenter">
+                      <udam:DynamicEntityField.ArgumentValue>
+                        <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("CostCenter").ToString]</InArgument>
+                      </udam:DynamicEntityField.ArgumentValue>
+                    </udam:DynamicEntityField>
+                    <udam:DynamicEntityField Id="d4b1668d-3e9f-f011-b3cd-002248a46af2" Name="Email">
+                      <udam:DynamicEntityField.ArgumentValue>
+                        <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Email").ToString]</InArgument>
+                      </udam:DynamicEntityField.ArgumentValue>
+                    </udam:DynamicEntityField>
+                    <udam:DynamicEntityField Id="d2b1668d-3e9f-f011-b3cd-002248a46af2" Name="HireDate">
+                      <udam:DynamicEntityField.ArgumentValue>
+                        <InArgument x:TypeArguments="s:DateTime">[Date.Parse(in_TransactionItem.SpecificContent("HireDate").ToString)]</InArgument>
+                      </udam:DynamicEntityField.ArgumentValue>
+                    </udam:DynamicEntityField>
+                    <udam:DynamicEntityField Id="d3b1668d-3e9f-f011-b3cd-002248a46af2" Name="JobTitle">
+                      <udam:DynamicEntityField.ArgumentValue>
+                        <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("JobTitle").ToString]</InArgument>
+                      </udam:DynamicEntityField.ArgumentValue>
+                    </udam:DynamicEntityField>
+                    <udam:DynamicEntityField Id="d5b1668d-3e9f-f011-b3cd-002248a46af2" Name="Manager">
+                      <udam:DynamicEntityField.ArgumentValue>
+                        <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Manager").ToString]</InArgument>
+                      </udam:DynamicEntityField.ArgumentValue>
+                    </udam:DynamicEntityField>
+                    <udam:DynamicEntityField Id="d6b1668d-3e9f-f011-b3cd-002248a46af2" Name="ManagerEmail">
+                      <udam:DynamicEntityField.ArgumentValue>
+                        <InArgument x:TypeArguments="x:String">ioan.suciu29@outlook.com</InArgument>
+                      </udam:DynamicEntityField.ArgumentValue>
+                    </udam:DynamicEntityField>
+                    <udam:DynamicEntityField Id="d0b1668d-3e9f-f011-b3cd-002248a46af2" Name="Name">
+                      <udam:DynamicEntityField.ArgumentValue>
+                        <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Name").ToString]</InArgument>
+                      </udam:DynamicEntityField.ArgumentValue>
+                    </udam:DynamicEntityField>
+                    <udam:DynamicEntityField Id="d7b1668d-3e9f-f011-b3cd-002248a46af2" Name="Organization">
+                      <udam:DynamicEntityField.ArgumentValue>
+                        <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Organization").ToString]</InArgument>
+                      </udam:DynamicEntityField.ArgumentValue>
+                    </udam:DynamicEntityField>
+                  </scg:List>
+                </udam:RecordState.SelectedFields>
+              </udam:RecordState>
+            </uda:CreateEntityRecord.State>
+          </uda:CreateEntityRecord>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
     <Sequence DisplayName="Create Queue Dictionary" sap:VirtualizedContainerService.HintSize="468,539" sap2010:WorkflowViewState.IdRef="Sequence_6">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">

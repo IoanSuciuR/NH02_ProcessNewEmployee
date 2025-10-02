@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="TestEntity" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="TestEntity_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:n="clr-namespace:NH02_ProcessNewEmployee;assembly=DataService.NH02_ProcessNewEmployee" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:uda="clr-namespace:UiPath.DataService.Activities;assembly=UiPath.DataService.Activities.Core" xmlns:udam="clr-namespace:UiPath.DataService.Activities.Models;assembly=UiPath.DataService.Activities.Core" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="TestEntity" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="TestEntity_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -89,7 +89,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="TestEntity" sap:VirtualizedContainerService.HintSize="1169,1136.04" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="TestEntity" sap:VirtualizedContainerService.HintSize="718,1073.04" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="Counter" />
     </Sequence.Variables>
@@ -106,64 +106,14 @@
         <InArgument x:TypeArguments="x:Int32">1</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[Counter &lt; 6]" DisplayName="While" sap:VirtualizedContainerService.HintSize="502,864" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+    <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[Counter &lt; 6]" DisplayName="While" sap:VirtualizedContainerService.HintSize="502,302" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
       <ui:InterruptibleWhile.Body>
-        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="468,727" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="468,165" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <uda:CreateEntityRecord x:TypeArguments="n:NewHireManagement" InputEntity="{x:Null}" IsInRecordView="{x:Null}" OutputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Create Entity Record" EntityId="9e21f32f-8a9a-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="434,562" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_1" InputEntityInFieldView="[new NH02_ProcessNewEmployee.NewHireManagement() With {  .EmployeeID = Counter.ToString,  .JobTitle = &quot;TestJob&quot; + Counter.ToString,  .Manager = &quot;Ioan Suciu&quot;,  .Name = &quot;Name&quot; + Counter.ToString,  .CostCenter = &quot;CostCenter&quot; + Counter.ToString,  .EmailSent = true,  .ManagerEmail = &quot;ioan.suciu29@outlook.com&quot;,  .Organization = &quot;Organisation&quot; + Counter.ToString }]" TimeoutInMs="30000">
-            <uda:CreateEntityRecord.State>
-              <udam:RecordState RequiredFieldCount="4">
-                <udam:RecordState.SelectedFields>
-                  <scg:List x:TypeArguments="udam:DynamicEntityField" Capacity="8">
-                    <udam:DynamicEntityField Id="a821f32f-8a9a-f011-b3cd-002248a46af2" IsRequired="True" Name="EmployeeID">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:String">[Counter.ToString]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="aa21f32f-8a9a-f011-b3cd-002248a46af2" IsRequired="True" Name="JobTitle">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:String">["TestJob" + Counter.ToString]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="ab21f32f-8a9a-f011-b3cd-002248a46af2" IsRequired="True" Name="Manager">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:String">Ioan Suciu</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="a921f32f-8a9a-f011-b3cd-002248a46af2" IsRequired="True" Name="Name">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:String">["Name" + Counter.ToString]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="ae21f32f-8a9a-f011-b3cd-002248a46af2" Name="CostCenter">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:String">["CostCenter" + Counter.ToString]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="af21f32f-8a9a-f011-b3cd-002248a46af2" Name="EmailSent">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:Boolean">True</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="ac21f32f-8a9a-f011-b3cd-002248a46af2" Name="ManagerEmail">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:String">ioan.suciu29@outlook.com</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="ad21f32f-8a9a-f011-b3cd-002248a46af2" Name="Organization">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:String">["Organisation" + Counter.ToString]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                  </scg:List>
-                </udam:RecordState.SelectedFields>
-              </udam:RecordState>
-            </uda:CreateEntityRecord.State>
-          </uda:CreateEntityRecord>
           <Assign sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_2">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Int32">[Counter]</OutArgument>
