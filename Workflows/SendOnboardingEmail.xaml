@@ -139,7 +139,7 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SendOnboardingEmail" sap:VirtualizedContainerService.HintSize="701,1165" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SendOnboardingEmail" sap:VirtualizedContainerService.HintSize="1021,1065" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="OnboardingEmail" />
       <Variable x:TypeArguments="x:String" Name="AttachmentPath" />
@@ -150,9 +150,9 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Send onboarding email&quot;]" />
-    <ui:ReadTextFile File="{x:Null}" Content="[OnboardingEmail]" DisplayName="Read Text File" FileName="Data\onboarding_email.txt" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
-    <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Send onboarding email&quot;]" />
+    <ui:ReadTextFile File="{x:Null}" Content="[OnboardingEmail]" DisplayName="Read Text File" FileName="Data\onboarding_email.txt" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <Assign sap:VirtualizedContainerService.HintSize="434,115" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[AttachmentPath]</OutArgument>
       </Assign.To>
@@ -160,8 +160,15 @@
         <InArgument x:TypeArguments="x:String">Data\How to create a Cloud Account.pdf</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:PathExists Exists="{x:Null}" DisplayName="Path Exists" sap:VirtualizedContainerService.HintSize="434,147" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[AttachmentPath]" PathType="File" Resource="[AttachmentFile]" />
-    <umam:SendMailConnections ArgumentAttachmentPaths="{x:Null}" ConnectionAccountName="{x:Null}" MailboxBackup="{x:Reference __ReferenceID0}" AttachmentInputMode="Builder" AttachmentPaths="{x:Null}" Attachments="{x:Null}" AuthScopesInvalid="False" Bcc="{x:Null}" Body="[OnboardingEmail]" Cc="[{&quot;irina.lazar@uipath.com&quot;}]" ConnectionId="d3a25ef7-edf6-4e4c-9355-661c7c1fa9cb" ContinueOnError="{x:Null}" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="434,596" sap2010:WorkflowViewState.IdRef="SendMailConnections_2" Importance="Normal" InputType="HTML" Mailbox="{x:Null}" ReplyTo="{x:Null}" SaveAsDraft="True" SingleAttachment="{x:Null}" Subject="Welcome to UiPath - Sales New Hire Orientation" TextBody="{x:Null}" To="[New String(){&quot;in_ToAddress&quot;}]" UseConnectionService="True" UseSharedMailbox="False">
+    <ui:PathExists Exists="{x:Null}" DisplayName="Path Exists" sap:VirtualizedContainerService.HintSize="434,57" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[AttachmentPath]" PathType="File" Resource="[AttachmentFile]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:PathExists>
+    <umam:SendMailConnections ArgumentAttachmentPaths="{x:Null}" ConnectionAccountName="{x:Null}" MailboxBackup="{x:Reference __ReferenceID0}" AttachmentInputMode="Builder" AttachmentPaths="{x:Null}" Attachments="{x:Null}" AuthScopesInvalid="False" Bcc="{x:Null}" Body="[OnboardingEmail]" Cc="[{&quot;irina.catauta@uipath.com&quot;}]" ConnectionId="d3a25ef7-edf6-4e4c-9355-661c7c1fa9cb" ContinueOnError="{x:Null}" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="434,582" sap2010:WorkflowViewState.IdRef="SendMailConnections_2" Importance="Normal" InputType="HTML" Mailbox="{x:Null}" ReplyTo="{x:Null}" SaveAsDraft="False" SingleAttachment="{x:Null}" Subject="Welcome to UiPath - Sales New Hire Orientation" TextBody="{x:Null}" To="[{in_ToAddress}]" UseConnectionService="True" UseSharedMailbox="False">
       <umam:SendMailConnections.AttachmentList>
         <scg:List x:TypeArguments="InArgument(upr:IResource)" Capacity="4">
           <InArgument x:TypeArguments="upr:IResource">[AttachmentFile]</InArgument>
