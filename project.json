@@ -16,12 +16,12 @@
       "serviceDocument": ".entities/EntitiesStore.json",
       "tenantName": "CXE_Automation",
       "namespace": "NH02_ProcessNewEmployee",
-      "uniqueReference": "VY4d5JZ/a5pzg7UALlMeVfPXXUc80Of0j6zA3hQ6Zf8="
+      "uniqueReference": "3tvDUO9bfcdOK1FtysWSqPAm0he0ksHs2qVHJrS9HcE="
     }
   ],
   "schemaVersion": "4.0",
   "studioVersion": "24.10.16.0",
-  "projectVersion": "1.0.0",
+  "projectVersion": "1.0.1",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
