@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="TestEntity" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="TestEntity_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:n="clr-namespace:NH02_ProcessNewEmployee;assembly=DataService.NH02_ProcessNewEmployee" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="UpdateEntity" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="UpdateEntity_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:n="clr-namespace:NH02_ProcessNewEmployee;assembly=DataService.NH02_ProcessNewEmployee" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:uda="clr-namespace:UiPath.DataService.Activities;assembly=UiPath.DataService.Activities.Core" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -25,15 +25,14 @@
       <x:String>System.Windows.Markup</x:String>
       <x:String>GlobalVariablesNamespace</x:String>
       <x:String>GlobalConstantsNamespace</x:String>
-      <x:String>NH02_ProcessNewEmployee</x:String>
-      <x:String>UiPath.DataService.Definition</x:String>
-      <x:String>UiPath.DataService.Activities.Models</x:String>
-      <x:String>System.Reflection</x:String>
       <x:String>UiPath.DataService.Activities</x:String>
+      <x:String>UiPath.DataService.Definition</x:String>
+      <x:String>System.Reflection</x:String>
       <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>NH02_ProcessNewEmployee</x:String>
       <x:String>System.Linq.Expressions</x:String>
       <x:String>System.Runtime.Serialization</x:String>
-      <x:String>System.Numerics</x:String>
+      <x:String>UiPath.DataService.Activities.Models</x:String>
       <x:String>System.ComponentModel</x:String>
       <x:String>System.Xml.Serialization</x:String>
       <x:String>UiPath.Excel</x:String>
@@ -68,17 +67,17 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>netstandard</AssemblyReference>
       <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
-      <AssemblyReference>DataService.NH02_ProcessNewEmployee</AssemblyReference>
-      <AssemblyReference>UiPath.DataService.Definition</AssemblyReference>
       <AssemblyReference>UiPath.DataService.Activities.Core</AssemblyReference>
+      <AssemblyReference>UiPath.DataService.Definition</AssemblyReference>
       <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
       <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
-      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>DataService.NH02_ProcessNewEmployee</AssemblyReference>
       <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Console</AssemblyReference>
       <AssemblyReference>System.Security.Permissions</AssemblyReference>
       <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
@@ -93,7 +92,6 @@
       <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
-      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
       <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
       <AssemblyReference>PresentationFramework</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
@@ -101,13 +99,13 @@
       <AssemblyReference>System.Private.Xml</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
-      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="TestEntity" sap:VirtualizedContainerService.HintSize="826,1136.04" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="UpdateEntity" sap:VirtualizedContainerService.HintSize="826,1136.04" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:Int32" Name="Counter" />
-      <Variable x:TypeArguments="sd:DataTable" Name="EmTable" />
+      <Variable x:TypeArguments="x:String" Name="Email" />
+      <Variable x:TypeArguments="x:String" Name="EID" />
+      <Variable x:TypeArguments="scg:IList(n:NewHireManagementEmployee)" Name="Found" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -115,13 +113,13 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[EmTable]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="502,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="C:\Users\Asus\Desktop\decembrie bootcamp.xlsx" />
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[EmTable]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="502,643" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[EmTable]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="502,463" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="468,456" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="468,267" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="n:NewHireManagementEmployee" Name="CreatedRecord" />
               <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="QueueItemContent" />
@@ -131,15 +129,15 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="434,396" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="434,207" sap2010:WorkflowViewState.IdRef="TryCatch_1">
               <TryCatch.Try>
-                <Sequence sap:VirtualizedContainerService.HintSize="484,336" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <Sequence sap:VirtualizedContainerService.HintSize="484,233" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Sequence DisplayName="Create Queue Dictionary" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <Sequence DisplayName="Create Queue Dictionary" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="Sequence_3">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -187,10 +185,10 @@
                 </Sequence>
               </TryCatch.Try>
               <TryCatch.Catches>
-                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,211" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
@@ -207,5 +205,30 @@
         </ActivityAction>
       </ui:ForEachRow.Body>
     </ui:ForEachRow>
+    <uda:QueryEntityRecords x:TypeArguments="n:NewHireManagementEmployee" TotalRecords="{x:Null}" ContinueOnError="False" DisplayName="Query Entity Records" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="502,163" sap2010:WorkflowViewState.IdRef="QueryEntityRecords`1_1" OutputRecords="[Found]" QueriedEntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" Skip="0" SortAscending="True" SortByField="Id" TimeoutInMs="30000" Top="100">
+      <uda:QueryEntityRecords.FilterArguments>
+        <uda:FilterArgument FilterActivityType="{x:Null}">
+          <uda:FilterArgument.Filter>
+            <uda:GroupFilter Index="0" Operator="AND">
+              <uda:GroupFilter.Filters>
+                <scg:List x:TypeArguments="uda:SimpleFilter" Capacity="4">
+                  <uda:SimpleFilter ExpressionValue="{x:Null}" FieldName="Email" FieldType="UiPath.DataService.Core.Models.EntityField" Operator="=" ValueIndex="0" />
+                  <uda:SimpleFilter ExpressionValue="{x:Null}" FieldName="EmployeeID" FieldType="UiPath.DataService.Core.Models.EntityField" Operator="=" ValueIndex="1" />
+                </scg:List>
+              </uda:GroupFilter.Filters>
+              <uda:GroupFilter.Groups>
+                <scg:List x:TypeArguments="uda:GroupFilter" Capacity="0" />
+              </uda:GroupFilter.Groups>
+            </uda:GroupFilter>
+          </uda:FilterArgument.Filter>
+        </uda:FilterArgument>
+      </uda:QueryEntityRecords.FilterArguments>
+      <uda:QueryEntityRecords.FilterValues>
+        <scg:List x:TypeArguments="InArgument" Capacity="4">
+          <InArgument x:TypeArguments="x:String">[Email]</InArgument>
+          <InArgument x:TypeArguments="x:String">[EID]</InArgument>
+        </scg:List>
+      </uda:QueryEntityRecords.FilterValues>
+    </uda:QueryEntityRecords>
   </Sequence>
 </Activity>
