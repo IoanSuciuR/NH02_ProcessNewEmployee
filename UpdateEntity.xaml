@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="UpdateEntity" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="UpdateEntity_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:n="clr-namespace:NH02_ProcessNewEmployee;assembly=DataService.NH02_ProcessNewEmployee" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:uda="clr-namespace:UiPath.DataService.Activities;assembly=UiPath.DataService.Activities.Core" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="UpdateEntity" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="UpdateEntity_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:n="clr-namespace:NH02_ProcessNewEmployee;assembly=DataService.NH02_ProcessNewEmployee" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:uda="clr-namespace:UiPath.DataService.Activities;assembly=UiPath.DataService.Activities.Core" xmlns:udam="clr-namespace:UiPath.DataService.Activities.Models;assembly=UiPath.DataService.Activities.Core" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -33,13 +33,9 @@
       <x:String>System.Linq.Expressions</x:String>
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>UiPath.DataService.Activities.Models</x:String>
+      <x:String>System.Numerics</x:String>
       <x:String>System.ComponentModel</x:String>
       <x:String>System.Xml.Serialization</x:String>
-      <x:String>UiPath.Excel</x:String>
-      <x:String>UiPath.Platform.ResourceHandling</x:String>
-      <x:String>UiPath.Excel.Activities</x:String>
-      <x:String>UiPath.DataTableUtilities</x:String>
-      <x:String>System.Activities.Runtime.Collections</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -99,27 +95,30 @@
       <AssemblyReference>System.Private.Xml</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="UpdateEntity" sap:VirtualizedContainerService.HintSize="826,1136.04" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="UpdateEntity" sap:VirtualizedContainerService.HintSize="809,1390" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Email" />
       <Variable x:TypeArguments="x:String" Name="EID" />
       <Variable x:TypeArguments="scg:IList(n:NewHireManagementEmployee)" Name="Found" />
+      <Variable x:TypeArguments="sd:DataTable" Name="EmTable" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[EmTable]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="502,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="C:\Users\Asus\Desktop\decembrie bootcamp.xlsx" />
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[EmTable]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="502,463" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[EmTable]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="450,120" sap2010:WorkflowViewState.IdRef="ReadRange_2" PreserveFormat="True" SheetName="Sheet1" WorkbookPath="C:\Users\Asus\Desktop\decembrie bootcamp.xlsx" />
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[EmTable]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="450,1247" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="468,267" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,1060" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <Sequence.Variables>
               <Variable x:TypeArguments="n:NewHireManagementEmployee" Name="CreatedRecord" />
               <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="QueueItemContent" />
@@ -129,106 +128,88 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="434,207" sap2010:WorkflowViewState.IdRef="TryCatch_1">
-              <TryCatch.Try>
-                <Sequence sap:VirtualizedContainerService.HintSize="484,233" sap2010:WorkflowViewState.IdRef="Sequence_4">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <Sequence DisplayName="Create Queue Dictionary" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="Sequence_3">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_3">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[QueueItemContent]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[new Dictionary(Of String,Object)]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                    <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_4">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="x:String">[QueueItemContent("Name")]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[CurrentRow("New Hire").ToString]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                    <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_5">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="x:String">[QueueItemContent("EmployeeID")]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[CurrentRow("E-mail").ToString]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                    <Assign sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_6">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="x:String">[QueueItemContent("EntityID")]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[CreatedRecord.Id.ToString]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                  </Sequence>
-                  <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" ContinueOnError="True" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="450,219" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" ItemInformationCollection="[QueueItemContent]" Priority="Normal" QueueType="NewHireManagement" Reference="[QueueItemContent(&quot;EmployeeID&quot;).ToString]">
-                    <ui:AddQueueItem.ItemInformation>
-                      <scg:Dictionary x:TypeArguments="x:String, InArgument" />
-                    </ui:AddQueueItem.ItemInformation>
-                  </ui:AddQueueItem>
-                </Sequence>
-              </TryCatch.Try>
-              <TryCatch.Catches>
-                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ActivityAction x:TypeArguments="s:Exception">
-                    <ActivityAction.Argument>
-                      <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
-                    </ActivityAction.Argument>
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="394,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Already there&quot;]" />
-                  </ActivityAction>
-                </Catch>
-              </TryCatch.Catches>
-            </TryCatch>
+            <uda:QueryEntityRecords x:TypeArguments="n:NewHireManagementEmployee" TotalRecords="{x:Null}" ContinueOnError="False" DisplayName="Query Entity Records" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="382,172" sap2010:WorkflowViewState.IdRef="QueryEntityRecords`1_2" OutputRecords="[Found]" QueriedEntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" Skip="0" SortAscending="True" SortByField="Id" TimeoutInMs="30000" Top="100">
+              <uda:QueryEntityRecords.FilterArguments>
+                <uda:FilterArgument FilterActivityType="{x:Null}">
+                  <uda:FilterArgument.Filter>
+                    <uda:GroupFilter Index="0" Operator="AND">
+                      <uda:GroupFilter.Filters>
+                        <scg:List x:TypeArguments="uda:SimpleFilter" Capacity="4">
+                          <uda:SimpleFilter ExpressionValue="{x:Null}" FieldName="Email" FieldType="UiPath.DataService.Core.Models.EntityField" Operator="=" ValueIndex="0" />
+                        </scg:List>
+                      </uda:GroupFilter.Filters>
+                      <uda:GroupFilter.Groups>
+                        <scg:List x:TypeArguments="uda:GroupFilter" Capacity="0" />
+                      </uda:GroupFilter.Groups>
+                    </uda:GroupFilter>
+                  </uda:FilterArgument.Filter>
+                </uda:FilterArgument>
+              </uda:QueryEntityRecords.FilterArguments>
+              <uda:QueryEntityRecords.FilterValues>
+                <scg:List x:TypeArguments="InArgument" Capacity="4">
+                  <InArgument x:TypeArguments="x:String">[CurrentRow("E-mail").ToString]</InArgument>
+                </scg:List>
+              </uda:QueryEntityRecords.FilterValues>
+            </uda:QueryEntityRecords>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,173" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[CurrentRow(&quot;E-mail&quot;).ToString + &quot; - &quot; + Found.Count.ToString]" />
+            <uda:UpdateEntityRecord x:TypeArguments="n:NewHireManagementEmployee" InputEntity="{x:Null}" IsInRecordView="{x:Null}" OutputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Update Entity Record" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="382,655" sap2010:WorkflowViewState.IdRef="UpdateEntityRecord`1_2" InputEntityInFieldView="[new NH02_ProcessNewEmployee.NewHireManagementEmployee() With {  .BootCampDone = false,  .BootcampFilesCheckConfirm = false,  .BootcampFilesDone = false,  .BootcampName = &quot;Bootcamp December&quot;,  .BootCampSessionID = &quot;F67AEC14-0DC5-F011-8195-000D3AB4E8DE&quot;,  .CourseDone = false,  .CourseWeekReminder = &quot;1&quot;,  .VirtualName = &quot;Virtual November&quot;,  .VirtualSessionID = &quot;BC0B16FF-0CC5-F011-8195-000D3AB4E8DE&quot;, .Id = Found(0).Id }]" RecordId="[Found(0).Id]" TimeoutInMs="30000">
+              <uda:UpdateEntityRecord.State>
+                <udam:RecordState RequiredFieldCount="1">
+                  <udam:RecordState.SelectedFields>
+                    <scg:List x:TypeArguments="udam:DynamicEntityField" Capacity="9">
+                      <udam:DynamicEntityField Id="ecb1668d-3e9f-f011-b3cd-002248a46af2" Name="BootCampDone">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="c19adba8-419f-f011-b3cd-002248a46af2" Name="BootcampFilesCheckConfirm">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="c09adba8-419f-f011-b3cd-002248a46af2" Name="BootcampFilesDone">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="e9eecf65-34ad-f011-8e61-0022489e60c3" Name="BootcampName">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">Bootcamp December</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="e9b1668d-3e9f-f011-b3cd-002248a46af2" Name="BootCampSessionID">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">F67AEC14-0DC5-F011-8195-000D3AB4E8DE</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="f6b1668d-3e9f-f011-b3cd-002248a46af2" Name="CourseDone">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="df33fa6e-05a8-f011-8e61-0022489e60c3" Name="CourseWeekReminder">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">1</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="e5f3a906-29ad-f011-8e61-0022489e60c3" Name="VirtualName">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">Virtual November</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="e5b1668d-3e9f-f011-b3cd-002248a46af2" Name="VirtualSessionID">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">BC0B16FF-0CC5-F011-8195-000D3AB4E8DE</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                    </scg:List>
+                  </udam:RecordState.SelectedFields>
+                </udam:RecordState>
+              </uda:UpdateEntityRecord.State>
+            </uda:UpdateEntityRecord>
           </Sequence>
         </ActivityAction>
       </ui:ForEachRow.Body>
     </ui:ForEachRow>
-    <uda:QueryEntityRecords x:TypeArguments="n:NewHireManagementEmployee" TotalRecords="{x:Null}" ContinueOnError="False" DisplayName="Query Entity Records" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="502,163" sap2010:WorkflowViewState.IdRef="QueryEntityRecords`1_1" OutputRecords="[Found]" QueriedEntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" Skip="0" SortAscending="True" SortByField="Id" TimeoutInMs="30000" Top="100">
-      <uda:QueryEntityRecords.FilterArguments>
-        <uda:FilterArgument FilterActivityType="{x:Null}">
-          <uda:FilterArgument.Filter>
-            <uda:GroupFilter Index="0" Operator="AND">
-              <uda:GroupFilter.Filters>
-                <scg:List x:TypeArguments="uda:SimpleFilter" Capacity="4">
-                  <uda:SimpleFilter ExpressionValue="{x:Null}" FieldName="Email" FieldType="UiPath.DataService.Core.Models.EntityField" Operator="=" ValueIndex="0" />
-                  <uda:SimpleFilter ExpressionValue="{x:Null}" FieldName="EmployeeID" FieldType="UiPath.DataService.Core.Models.EntityField" Operator="=" ValueIndex="1" />
-                </scg:List>
-              </uda:GroupFilter.Filters>
-              <uda:GroupFilter.Groups>
-                <scg:List x:TypeArguments="uda:GroupFilter" Capacity="0" />
-              </uda:GroupFilter.Groups>
-            </uda:GroupFilter>
-          </uda:FilterArgument.Filter>
-        </uda:FilterArgument>
-      </uda:QueryEntityRecords.FilterArguments>
-      <uda:QueryEntityRecords.FilterValues>
-        <scg:List x:TypeArguments="InArgument" Capacity="4">
-          <InArgument x:TypeArguments="x:String">[Email]</InArgument>
-          <InArgument x:TypeArguments="x:String">[EID]</InArgument>
-        </scg:List>
-      </uda:QueryEntityRecords.FilterValues>
-    </uda:QueryEntityRecords>
   </Sequence>
 </Activity>

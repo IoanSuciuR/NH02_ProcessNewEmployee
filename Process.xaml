@@ -111,10 +111,12 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="809,1259" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="809,1987" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="QueueItemContent" />
       <Variable x:TypeArguments="n:NewHireManagementEmployee" Name="CreatedRecord" />
+      <Variable x:TypeArguments="x:String" Name="ManagerEmail" />
+      <Variable x:TypeArguments="x:String" Name="ManagerName" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -122,8 +124,60 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="450,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process for &quot; + in_TransactionItem.SpecificContent(&quot;EmployeeID&quot;).ToString]" />
-    <uda:CreateEntityRecord x:TypeArguments="n:NewHireManagementEmployee" InputEntity="{x:Null}" IsInRecordView="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Create Entity Record" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="450,715" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_2" InputEntityInFieldView="[new NH02_ProcessNewEmployee.NewHireManagementEmployee() With {  .EmployeeID = in_TransactionItem.SpecificContent(&quot;EmployeeID&quot;).ToString,  .BusinessSite = in_TransactionItem.SpecificContent(&quot;Location&quot;).ToString,  .CostCenter = in_TransactionItem.SpecificContent(&quot;CostCenter&quot;).ToString,  .Email = in_TransactionItem.SpecificContent(&quot;Email&quot;).ToString,  .HireDate = Date.Parse(in_TransactionItem.SpecificContent(&quot;HireDate&quot;).ToString),  .HRContact = String.Join(&quot;;&quot;,in_TransactionItem.SpecificContent(&quot;HRContact&quot;).ToString.Split({&quot;;&quot;},StringSplitOptions.RemoveEmptyEntries).Select(Function(em) em.Trim)),  .JobTitle = in_TransactionItem.SpecificContent(&quot;JobTitle&quot;).ToString,  .Manager = in_TransactionItem.SpecificContent(&quot;Manager&quot;).ToString,  .ManagerEmail = in_TransactionItem.SpecificContent(&quot;Manager_Email&quot;).ToString,  .Name = in_TransactionItem.SpecificContent(&quot;Name&quot;).ToString,  .Organization = in_TransactionItem.SpecificContent(&quot;Organization&quot;).ToString }]" OutputEntity="[CreatedRecord]" TimeoutInMs="30000">
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="502,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process for &quot; + in_TransactionItem.SpecificContent(&quot;EmployeeID&quot;).ToString]" />
+    <If Condition="[in_TransactionItem.SpecificContent(&quot;Manager_Email&quot;).ToString.Trim.ToLower = &quot;mark.gibbs@uipath.com&quot;]" sap:VirtualizedContainerService.HintSize="502,728" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,279" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_6">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[ManagerEmail]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">nicola.bazzoni@uipath.com</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_7">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[ManagerName]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">Nicola Bazzoni</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,279" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_8">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[ManagerEmail]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Manager_Email").ToString]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_9">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[ManagerName]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Manager").ToString]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </If.Else>
+    </If>
+    <uda:CreateEntityRecord x:TypeArguments="n:NewHireManagementEmployee" InputEntity="{x:Null}" IsInRecordView="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Create Entity Record" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="502,715" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_2" InputEntityInFieldView="[new NH02_ProcessNewEmployee.NewHireManagementEmployee() With {  .EmployeeID = in_TransactionItem.SpecificContent(&quot;EmployeeID&quot;).ToString,  .BusinessSite = in_TransactionItem.SpecificContent(&quot;Location&quot;).ToString,  .CostCenter = in_TransactionItem.SpecificContent(&quot;CostCenter&quot;).ToString,  .Email = in_TransactionItem.SpecificContent(&quot;Email&quot;).ToString,  .HireDate = Date.Parse(in_TransactionItem.SpecificContent(&quot;HireDate&quot;).ToString),  .HRContact = String.Join(&quot;;&quot;,in_TransactionItem.SpecificContent(&quot;HRContact&quot;).ToString.Split({&quot;;&quot;},StringSplitOptions.RemoveEmptyEntries).Select(Function(em) em.Trim)),  .JobTitle = in_TransactionItem.SpecificContent(&quot;JobTitle&quot;).ToString,  .Manager = ManagerName,  .ManagerEmail = ManagerEmail,  .Name = in_TransactionItem.SpecificContent(&quot;Name&quot;).ToString,  .Organization = in_TransactionItem.SpecificContent(&quot;Organization&quot;).ToString }]" OutputEntity="[CreatedRecord]" TimeoutInMs="30000">
       <uda:CreateEntityRecord.State>
         <udam:RecordState RequiredFieldCount="1">
           <udam:RecordState.SelectedFields>
@@ -165,12 +219,12 @@
               </udam:DynamicEntityField>
               <udam:DynamicEntityField Id="d5b1668d-3e9f-f011-b3cd-002248a46af2" Name="Manager">
                 <udam:DynamicEntityField.ArgumentValue>
-                  <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Manager").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String">[ManagerName]</InArgument>
                 </udam:DynamicEntityField.ArgumentValue>
               </udam:DynamicEntityField>
               <udam:DynamicEntityField Id="d6b1668d-3e9f-f011-b3cd-002248a46af2" Name="ManagerEmail">
                 <udam:DynamicEntityField.ArgumentValue>
-                  <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Manager_Email").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String">[ManagerEmail]</InArgument>
                 </udam:DynamicEntityField.ArgumentValue>
               </udam:DynamicEntityField>
               <udam:DynamicEntityField Id="d0b1668d-3e9f-f011-b3cd-002248a46af2" Name="Name">
@@ -188,7 +242,7 @@
         </udam:RecordState>
       </uda:CreateEntityRecord.State>
     </uda:CreateEntityRecord>
-    <Sequence DisplayName="Create Queue Dictionary" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="Sequence_6">
+    <Sequence DisplayName="Create Queue Dictionary" sap:VirtualizedContainerService.HintSize="502,57" sap2010:WorkflowViewState.IdRef="Sequence_6">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -228,7 +282,7 @@
         </Assign.Value>
       </Assign>
     </Sequence>
-    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" ContinueOnError="True" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="450,219" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" ItemInformationCollection="[QueueItemContent]" Priority="Normal" QueueType="NewHireManagement" Reference="[QueueItemContent(&quot;EmployeeID&quot;).ToString]">
+    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" ContinueOnError="True" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="502,219" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" ItemInformationCollection="[QueueItemContent]" Priority="Normal" QueueType="NewHireManagement" Reference="[QueueItemContent(&quot;EmployeeID&quot;).ToString]">
       <ui:AddQueueItem.ItemInformation>
         <scg:Dictionary x:TypeArguments="x:String, InArgument" />
       </ui:AddQueueItem.ItemInformation>
