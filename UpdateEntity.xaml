@@ -104,7 +104,7 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="UpdateEntity" sap:VirtualizedContainerService.HintSize="805,3160" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="UpdateEntity" sap:VirtualizedContainerService.HintSize="757,1572" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Email" />
       <Variable x:TypeArguments="x:String" Name="EID" />
@@ -116,21 +116,22 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uda:QueryEntityRecords x:TypeArguments="n:NewHireManagementEmployee" FilterArguments="{x:Null}" TotalRecords="{x:Null}" ContinueOnError="False" DisplayName="Query Entity Records" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="674,172" sap2010:WorkflowViewState.IdRef="QueryEntityRecords`1_3" OutputRecords="[Found]" QueriedEntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" Skip="0" SortAscending="True" SortByField="Id" TimeoutInMs="30000" Top="100">
+    <uda:QueryEntityRecords x:TypeArguments="n:NewHireManagementEmployee" FilterArguments="{x:Null}" TotalRecords="{x:Null}" ContinueOnError="False" DisplayName="Query Entity Records" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="518,172" sap2010:WorkflowViewState.IdRef="QueryEntityRecords`1_4" OutputRecords="[Found]" QueriedEntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" Skip="0" SortAscending="True" SortByField="Id" TimeoutInMs="30000" Top="5000">
       <uda:QueryEntityRecords.FilterValues>
         <scg:List x:TypeArguments="InArgument" Capacity="4">
           <InArgument x:TypeArguments="x:String">[CurrentRow("E-mail").ToString]</InArgument>
         </scg:List>
       </uda:QueryEntityRecords.FilterValues>
     </uda:QueryEntityRecords>
-    <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[EmTable]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="674,120" sap2010:WorkflowViewState.IdRef="ReadRange_2" PreserveFormat="True" SheetName="Sheet1" WorkbookPath="C:\Users\Asus\Desktop\decembrie bootcamp.xlsx" />
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[EmTable]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="674,2845" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="518,173" sap2010:WorkflowViewState.IdRef="LogMessage_7" Message="[Found.Count]" />
+    <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[EmTable]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="518,120" sap2010:WorkflowViewState.IdRef="ReadRange_2" PreserveFormat="True" SheetName="January participants" WorkbookPath="C:\Users\Asus\Desktop\January Event.xlsx" />
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="518,1084" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="640,2658" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="484,897" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <Sequence.Variables>
               <Variable x:TypeArguments="n:NewHireManagementEmployee" Name="CreatedRecord" />
               <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="QueueItemContent" />
@@ -141,28 +142,9 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="606,57" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="CommentOut_8">
               <ui:CommentOut.Body>
-                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,399" sap2010:WorkflowViewState.IdRef="Sequence_14">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:GetQueueItems Duration="{x:Null}" From="{x:Null}" Priority="{x:Null}" Skip="{x:Null}" TimeoutMS="{x:Null}" To="{x:Null}" Top="{x:Null}" DisplayName="Get Queue Items" FilterStrategy="Equals" sap:VirtualizedContainerService.HintSize="382,175" sap2010:WorkflowViewState.IdRef="GetQueueItems_1" QueueItemStates="All" QueueName="NewHireManagement" Reference="[CurrentRow(&quot;E-mail&quot;).ToString]" Result="[Items]" />
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,164" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[CurrentRow(&quot;E-mail&quot;).ToString + &quot; - &quot; + Items.Count.ToString]" />
-                </Sequence>
-              </ui:CommentOut.Body>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:CommentOut>
-            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="606,57" sap2010:WorkflowViewState.IdRef="CommentOut_5">
-              <ui:CommentOut.Body>
-                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="484,336" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="484,336" sap2010:WorkflowViewState.IdRef="Sequence_21">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -222,56 +204,72 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:CommentOut>
-            <uda:QueryEntityRecords x:TypeArguments="n:NewHireManagementEmployee" TotalRecords="{x:Null}" ContinueOnError="False" DisplayName="Query Entity Records" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="606,172" sap2010:WorkflowViewState.IdRef="QueryEntityRecords`1_2" OutputRecords="[Found]" QueriedEntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" Skip="0" SortAscending="True" SortByField="Id" TimeoutInMs="30000" Top="100">
-              <uda:QueryEntityRecords.FilterArguments>
-                <uda:FilterArgument FilterActivityType="{x:Null}">
-                  <uda:FilterArgument.Filter>
-                    <uda:GroupFilter Index="0" Operator="AND">
-                      <uda:GroupFilter.Filters>
-                        <scg:List x:TypeArguments="uda:SimpleFilter" Capacity="4">
-                          <uda:SimpleFilter ExpressionValue="{x:Null}" FieldName="Email" FieldType="UiPath.DataService.Core.Models.EntityField" Operator="=" ValueIndex="0" />
-                        </scg:List>
-                      </uda:GroupFilter.Filters>
-                      <uda:GroupFilter.Groups>
-                        <scg:List x:TypeArguments="uda:GroupFilter" Capacity="0" />
-                      </uda:GroupFilter.Groups>
-                    </uda:GroupFilter>
-                  </uda:FilterArgument.Filter>
-                </uda:FilterArgument>
-              </uda:QueryEntityRecords.FilterArguments>
-              <uda:QueryEntityRecords.FilterValues>
-                <scg:List x:TypeArguments="InArgument" Capacity="4">
-                  <InArgument x:TypeArguments="x:String">[CurrentRow("E-mail").ToString]</InArgument>
-                </scg:List>
-              </uda:QueryEntityRecords.FilterValues>
-            </uda:QueryEntityRecords>
-            <uda:UpdateEntityRecord x:TypeArguments="n:NewHireManagementEmployee" InputEntity="{x:Null}" IsInRecordView="{x:Null}" OutputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Update Entity Record" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="606,256" sap2010:WorkflowViewState.IdRef="UpdateEntityRecord`1_4" InputEntityInFieldView="[new NH02_ProcessNewEmployee.NewHireManagementEmployee() With {  .BootcampStart = new System.DateTime(2025, 12, 8, 9, 0, 0, System.DateTimeKind.Unspecified), .Id = Found(0).id }]" RecordId="[Found(0).id]" TimeoutInMs="30000">
-              <uda:UpdateEntityRecord.State>
-                <udam:RecordState RequiredFieldCount="1">
-                  <udam:RecordState.SelectedFields>
-                    <scg:List x:TypeArguments="udam:DynamicEntityField" Capacity="1">
-                      <udam:DynamicEntityField Id="eaeecf65-34ad-f011-8e61-0022489e60c3" Name="BootcampStart">
-                        <udam:DynamicEntityField.ArgumentValue>
-                          <InArgument x:TypeArguments="s:DateTime">12/08/2025 09:00:00</InArgument>
-                        </udam:DynamicEntityField.ArgumentValue>
-                      </udam:DynamicEntityField>
-                    </scg:List>
-                  </udam:RecordState.SelectedFields>
-                </udam:RecordState>
-              </uda:UpdateEntityRecord.State>
-            </uda:UpdateEntityRecord>
-            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="606,1239" sap2010:WorkflowViewState.IdRef="CommentOut_3">
-              <ui:CommentOut.Body>
-                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="570,1128" sap2010:WorkflowViewState.IdRef="Sequence_13">
+            <If Condition="[Found.Any(function(e) e.Email.ToLower.Trim = CurrentRow(&quot;E-mail&quot;).ToString.ToLower.Trim)]" sap:VirtualizedContainerService.HintSize="450,618" sap2010:WorkflowViewState.IdRef="If_3">
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,224" sap2010:WorkflowViewState.IdRef="Sequence_19">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <If Condition="[Items.count = 0]" sap:VirtualizedContainerService.HintSize="536,1068" sap2010:WorkflowViewState.IdRef="If_2">
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,164" sap2010:WorkflowViewState.IdRef="LogMessage_4" Message="[&quot;Found - &quot; + CurrentRow(&quot;E-mail&quot;).ToString]" />
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,224" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,164" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Warn" Message="[&quot;NOT found - &quot; + CurrentRow(&quot;E-mail&quot;).ToString]" />
+                </Sequence>
+              </If.Else>
+            </If>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="CommentOut_7">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,307" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uda:UpdateEntityRecord x:TypeArguments="n:NewHireManagementEmployee" InputEntity="{x:Null}" IsInRecordView="{x:Null}" OutputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Update Entity Record" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="382,247" sap2010:WorkflowViewState.IdRef="UpdateEntityRecord`1_4" InputEntityInFieldView="[new NH02_ProcessNewEmployee.NewHireManagementEmployee() With {  .BootcampStart = new System.DateTime(2025, 12, 8, 9, 0, 0, System.DateTimeKind.Unspecified), .Id = Found(0).id }]" RecordId="[Found(0).id]" TimeoutInMs="30000">
+                    <uda:UpdateEntityRecord.State>
+                      <udam:RecordState RequiredFieldCount="1">
+                        <udam:RecordState.SelectedFields>
+                          <scg:List x:TypeArguments="udam:DynamicEntityField" Capacity="1">
+                            <udam:DynamicEntityField Id="eaeecf65-34ad-f011-8e61-0022489e60c3" Name="BootcampStart">
+                              <udam:DynamicEntityField.ArgumentValue>
+                                <InArgument x:TypeArguments="s:DateTime">12/08/2025 09:00:00</InArgument>
+                              </udam:DynamicEntityField.ArgumentValue>
+                            </udam:DynamicEntityField>
+                          </scg:List>
+                        </udam:RecordState.SelectedFields>
+                      </udam:RecordState>
+                    </uda:UpdateEntityRecord.State>
+                  </uda:UpdateEntityRecord>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,108" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If Condition="[Items.count = 0]" sap:VirtualizedContainerService.HintSize="382,48" sap2010:WorkflowViewState.IdRef="If_2">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
@@ -341,8 +339,14 @@
                   </If>
                 </Sequence>
               </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
             </ui:CommentOut>
-            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="606,817" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="450,48" sap2010:WorkflowViewState.IdRef="CommentOut_2">
               <ui:CommentOut.Body>
                 <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,715" sap2010:WorkflowViewState.IdRef="Sequence_9">
                   <sap:WorkflowViewStateService.ViewState>
@@ -409,7 +413,7 @@
               </ui:CommentOut.Body>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
@@ -417,6 +421,11 @@
           </Sequence>
         </ActivityAction>
       </ui:ForEachRow.Body>
+      <ui:ForEachRow.DataTable>
+        <InArgument x:TypeArguments="sd:DataTable">
+          <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="EmTable" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
+        </InArgument>
+      </ui:ForEachRow.DataTable>
     </ui:ForEachRow>
   </Sequence>
 </Activity>
