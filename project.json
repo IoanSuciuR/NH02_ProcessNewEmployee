@@ -14,9 +14,7 @@
   "entitiesStores": [
     {
       "serviceDocument": ".entities/EntitiesStore.json",
-      "tenantName": "CXE_Automation",
-      "namespace": "NH02_ProcessNewEmployee",
-      "uniqueReference": "v6NB1EqSClRLHuGk+8jm8yRQNv3VjS8sXbKQq7I7rN8="
+      "namespace": "NH02_ProcessNewEmployee"
     }
   ],
   "schemaVersion": "4.0",
@@ -44,7 +42,6 @@
     "projectProfile": "Developement",
     "outputType": "Process",
     "libraryOptions": {
-      "includeOriginalXaml": false,
       "privateWorkflows": []
     },
     "processOptions": {

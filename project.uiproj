@@ -1,0 +1,6 @@
+{
+  "Name": "NH02_ProcessNewEmployee",
+  "ProjectType": "Process",
+  "Description": "Send new hire email and add to Data Manager",
+  "MainFile": "Main.xaml"
+}
