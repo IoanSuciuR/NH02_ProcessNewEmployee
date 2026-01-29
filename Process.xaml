@@ -111,7 +111,7 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="967,4828" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="978,4828" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="QueueItemContent" />
       <Variable x:TypeArguments="n:NewHireManagementEmployee" Name="CreatedRecord" />
@@ -177,7 +177,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <uda:CreateEntityRecord x:TypeArguments="n:NewHireManagementEmployee" InputEntity="{x:Null}" IsInRecordView="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Create Entity Record" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="452,3540" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_2" InputEntityInFieldView="[new NH02_ProcessNewEmployee.NewHireManagementEmployee() With {  .EmployeeID = in_TransactionItem.SpecificContent(&quot;EmployeeID&quot;).ToString,  .BootCampDone = false,  .BootcampFilesCheckConfirm = false,  .BootcampFilesDone = false,  .BootcampManagerDM = false,  .BootcampName = &quot;&quot;,  .BootCampSessionID = &quot;&quot;,  .BootcampSlackChannelName = &quot;&quot;,  .BuddyDone = false,  .BuddyEmail = &quot;&quot;,  .BuddyInitialMessage = false,  .BusinessSite = in_TransactionItem.SpecificContent(&quot;Location&quot;).ToString,  .CostCenter = in_TransactionItem.SpecificContent(&quot;CostCenter&quot;).ToString,  .CourseChapter = &quot;&quot;,  .CourseDone = false,  .CoursePingDone = false,  .CourseProgression = &quot;&quot;,  .CourseReminderCount = 0D,  .Email = in_TransactionItem.SpecificContent(&quot;Email&quot;).ToString,  .HireDate = Date.Parse(in_TransactionItem.SpecificContent(&quot;HireDate&quot;).ToString),  .HRContact = String.Join(&quot;;&quot;,in_TransactionItem.SpecificContent(&quot;HRContact&quot;).ToString.Split({&quot;;&quot;},StringSplitOptions.RemoveEmptyEntries).Select(Function(em) em.Trim)),  .HRDone = false,  .HRInitialMessage = false,  .HRNextPing = Datetime.Now.AddDays(30),  .JobTitle = in_TransactionItem.SpecificContent(&quot;JobTitle&quot;).ToString,  .Manager = ManagerName,  .ManagerDone = false,  .ManagerEmail = ManagerEmail,  .ManagerNextPing = Datetime.Now.AddDays(2),  .Name = in_TransactionItem.SpecificContent(&quot;Name&quot;).ToString,  .NewHireInitialDM = false,  .Organization = in_TransactionItem.SpecificContent(&quot;Organization&quot;).ToString,  .VirtualDone = false }]" OutputEntity="[CreatedRecord]" TimeoutInMs="30000">
+    <uda:CreateEntityRecord x:TypeArguments="n:NewHireManagementEmployee" InputEntity="{x:Null}" IsInRecordView="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Create Entity Record" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="452,3540" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_2" InputEntityInFieldView="[new NH02_ProcessNewEmployee.NewHireManagementEmployee() With {  .EmployeeID = in_TransactionItem.SpecificContent(&quot;EmployeeID&quot;).ToString,  .BootCampDone = false,  .BootcampFilesCheckConfirm = false,  .BootcampFilesDone = false,  .BootcampManagerDM = false,  .BootcampName = &quot;NotAllocated&quot;,  .BootCampSessionID = &quot;NotAllocated&quot;,  .BootcampSlackChannelName = &quot;&quot;,  .BuddyDone = false,  .BuddyEmail = &quot;&quot;,  .BuddyInitialMessage = false,  .BusinessSite = in_TransactionItem.SpecificContent(&quot;Location&quot;).ToString,  .CostCenter = in_TransactionItem.SpecificContent(&quot;CostCenter&quot;).ToString,  .CourseChapter = &quot;&quot;,  .CourseDone = false,  .CoursePingDone = false,  .CourseProgression = &quot;&quot;,  .CourseReminderCount = 0D,  .Email = in_TransactionItem.SpecificContent(&quot;Email&quot;).ToString,  .HireDate = Date.Parse(in_TransactionItem.SpecificContent(&quot;HireDate&quot;).ToString),  .HRContact = String.Join(&quot;;&quot;,in_TransactionItem.SpecificContent(&quot;HRContact&quot;).ToString.Split({&quot;;&quot;},StringSplitOptions.RemoveEmptyEntries).Select(Function(em) em.Trim)),  .HRDone = false,  .HRInitialMessage = false,  .HRNextPing = Datetime.Now.AddDays(30),  .JobTitle = in_TransactionItem.SpecificContent(&quot;JobTitle&quot;).ToString,  .Manager = ManagerName,  .ManagerDone = false,  .ManagerEmail = ManagerEmail,  .ManagerNextPing = Datetime.Now.AddDays(2),  .Name = in_TransactionItem.SpecificContent(&quot;Name&quot;).ToString,  .NewHireInitialDM = false,  .Organization = in_TransactionItem.SpecificContent(&quot;Organization&quot;).ToString,  .VirtualDone = false,  .VirtualName = &quot;NotAllocated&quot;,  .VirtualSessionID = &quot;NotAllocated&quot; }]" OutputEntity="[CreatedRecord]" TimeoutInMs="30000">
       <uda:CreateEntityRecord.State>
         <udam:RecordState RequiredFieldCount="1">
           <udam:RecordState.SelectedFields>
@@ -232,16 +232,12 @@
               </udam:DynamicEntityField>
               <udam:DynamicEntityField Id="e9eecf65-34ad-f011-8e61-0022489e60c3" Name="BootcampName">
                 <udam:DynamicEntityField.ArgumentValue>
-                  <InArgument x:TypeArguments="x:String">
-                    <Literal x:TypeArguments="x:String" Value="" />
-                  </InArgument>
+                  <InArgument x:TypeArguments="x:String">NotAllocated</InArgument>
                 </udam:DynamicEntityField.ArgumentValue>
               </udam:DynamicEntityField>
               <udam:DynamicEntityField Id="e9b1668d-3e9f-f011-b3cd-002248a46af2" Name="BootCampSessionID">
                 <udam:DynamicEntityField.ArgumentValue>
-                  <InArgument x:TypeArguments="x:String">
-                    <Literal x:TypeArguments="x:String" Value="" />
-                  </InArgument>
+                  <InArgument x:TypeArguments="x:String">NotAllocated</InArgument>
                 </udam:DynamicEntityField.ArgumentValue>
               </udam:DynamicEntityField>
               <udam:DynamicEntityField Id="93a75fa0-54aa-f011-8e61-0022489e60c3" Name="BootcampSlackChannelName">
@@ -320,8 +316,16 @@
                   <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Email").ToString]</InArgument>
                 </udam:DynamicEntityField.ArgumentValue>
               </udam:DynamicEntityField>
-              <udam:DynamicEntityField Id="aa3b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStart17" />
-              <udam:DynamicEntityField Id="ab3b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStart18" />
+              <udam:DynamicEntityField Id="aa3b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStart17">
+                <udam:DynamicEntityField.ArgumentValue>
+                  <InArgument x:TypeArguments="x:String" />
+                </udam:DynamicEntityField.ArgumentValue>
+              </udam:DynamicEntityField>
+              <udam:DynamicEntityField Id="ab3b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStart18">
+                <udam:DynamicEntityField.ArgumentValue>
+                  <InArgument x:TypeArguments="x:String" />
+                </udam:DynamicEntityField.ArgumentValue>
+              </udam:DynamicEntityField>
               <udam:DynamicEntityField Id="ac3b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStart20">
                 <udam:DynamicEntityField.ArgumentValue>
                   <InArgument x:TypeArguments="x:String" />
@@ -426,12 +430,12 @@
               <udam:DynamicEntityField Id="e7b1668d-3e9f-f011-b3cd-002248a46af2" Name="VirtualLastPing" />
               <udam:DynamicEntityField Id="e5f3a906-29ad-f011-8e61-0022489e60c3" Name="VirtualName">
                 <udam:DynamicEntityField.ArgumentValue>
-                  <InArgument x:TypeArguments="x:String" />
+                  <InArgument x:TypeArguments="x:String">NotAllocated</InArgument>
                 </udam:DynamicEntityField.ArgumentValue>
               </udam:DynamicEntityField>
               <udam:DynamicEntityField Id="e5b1668d-3e9f-f011-b3cd-002248a46af2" Name="VirtualSessionID">
                 <udam:DynamicEntityField.ArgumentValue>
-                  <InArgument x:TypeArguments="x:String" />
+                  <InArgument x:TypeArguments="x:String">NotAllocated</InArgument>
                 </udam:DynamicEntityField.ArgumentValue>
               </udam:DynamicEntityField>
               <udam:DynamicEntityField Id="8fa0836b-29ad-f011-8e61-0022489e60c3" Name="VirtualStart" />
