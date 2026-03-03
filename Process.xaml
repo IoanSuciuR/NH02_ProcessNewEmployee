@@ -111,7 +111,7 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="978,4828" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="825,3920" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="QueueItemContent" />
       <Variable x:TypeArguments="n:NewHireManagementEmployee" Name="CreatedRecord" />
@@ -124,8 +124,14 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="452,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process for &quot; + in_TransactionItem.SpecificContent(&quot;EmployeeID&quot;).ToString]" />
-    <If Condition="[in_TransactionItem.SpecificContent(&quot;Manager_Email&quot;).ToString.Trim.ToLower = &quot;mark.gibbs@uipath.com&quot;]" sap:VirtualizedContainerService.HintSize="452,965" sap2010:WorkflowViewState.IdRef="If_1">
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="450,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process for &quot; + in_TransactionItem.SpecificContent(&quot;EmployeeID&quot;).ToString]" />
+    <If Condition="[in_TransactionItem.SpecificContent(&quot;Manager_Email&quot;).ToString.Trim.ToLower = &quot;mark.gibbs@uipath.com&quot;]" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="If_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
       <If.Then>
         <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,413" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <sap:WorkflowViewStateService.ViewState>
@@ -177,7 +183,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <uda:CreateEntityRecord x:TypeArguments="n:NewHireManagementEmployee" InputEntity="{x:Null}" IsInRecordView="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Create Entity Record" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="452,3540" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_2" InputEntityInFieldView="[new NH02_ProcessNewEmployee.NewHireManagementEmployee() With {  .EmployeeID = in_TransactionItem.SpecificContent(&quot;EmployeeID&quot;).ToString,  .BootCampDone = false,  .BootcampFilesCheckConfirm = false,  .BootcampFilesDone = false,  .BootcampManagerDM = false,  .BootcampName = &quot;NotAllocated&quot;,  .BootCampSessionID = &quot;NotAllocated&quot;,  .BootcampSlackChannelName = &quot;&quot;,  .BuddyDone = false,  .BuddyEmail = &quot;&quot;,  .BuddyInitialMessage = false,  .BusinessSite = in_TransactionItem.SpecificContent(&quot;Location&quot;).ToString,  .CostCenter = in_TransactionItem.SpecificContent(&quot;CostCenter&quot;).ToString,  .CourseChapter = &quot;&quot;,  .CourseDone = false,  .CoursePingDone = false,  .CourseProgression = &quot;&quot;,  .CourseReminderCount = 0D,  .Email = in_TransactionItem.SpecificContent(&quot;Email&quot;).ToString,  .HireDate = Date.Parse(in_TransactionItem.SpecificContent(&quot;HireDate&quot;).ToString),  .HRContact = String.Join(&quot;;&quot;,in_TransactionItem.SpecificContent(&quot;HRContact&quot;).ToString.Split({&quot;;&quot;},StringSplitOptions.RemoveEmptyEntries).Select(Function(em) em.Trim)),  .HRDone = false,  .HRInitialMessage = false,  .HRNextPing = Datetime.Now.AddDays(30),  .JobTitle = in_TransactionItem.SpecificContent(&quot;JobTitle&quot;).ToString,  .Manager = ManagerName,  .ManagerDone = false,  .ManagerEmail = ManagerEmail,  .ManagerNextPing = Datetime.Now.AddDays(2),  .Name = in_TransactionItem.SpecificContent(&quot;Name&quot;).ToString,  .NewHireInitialDM = false,  .Organization = in_TransactionItem.SpecificContent(&quot;Organization&quot;).ToString,  .VirtualDone = false,  .VirtualName = &quot;NotAllocated&quot;,  .VirtualSessionID = &quot;NotAllocated&quot; }]" OutputEntity="[CreatedRecord]" TimeoutInMs="30000">
+    <uda:CreateEntityRecord x:TypeArguments="n:NewHireManagementEmployee" InputEntity="{x:Null}" IsInRecordView="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Create Entity Record" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="450,3540" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_2" InputEntityInFieldView="[new NH02_ProcessNewEmployee.NewHireManagementEmployee() With {  .EmployeeID = in_TransactionItem.SpecificContent(&quot;EmployeeID&quot;).ToString,  .BootCampDone = false,  .BootcampFilesCheckConfirm = false,  .BootcampFilesDone = false,  .BootcampManagerDM = false,  .BootcampName = &quot;NotAllocated&quot;,  .BootCampSessionID = &quot;NotAllocated&quot;,  .BootcampSlackChannelName = &quot;&quot;,  .BuddyDone = false,  .BuddyEmail = &quot;&quot;,  .BuddyInitialMessage = false,  .BusinessSite = in_TransactionItem.SpecificContent(&quot;Location&quot;).ToString,  .CostCenter = in_TransactionItem.SpecificContent(&quot;CostCenter&quot;).ToString,  .CourseChapter = &quot;&quot;,  .CourseDone = false,  .CoursePingDone = false,  .CourseProgression = &quot;&quot;,  .CourseReminderCount = 0D,  .Email = in_TransactionItem.SpecificContent(&quot;Email&quot;).ToString,  .HireDate = Date.Parse(in_TransactionItem.SpecificContent(&quot;HireDate&quot;).ToString),  .HRContact = String.Join(&quot;;&quot;,in_TransactionItem.SpecificContent(&quot;HRContact&quot;).ToString.Split({&quot;;&quot;},StringSplitOptions.RemoveEmptyEntries).Select(Function(em) em.Trim)),  .HRDone = false,  .HRInitialMessage = false,  .HRNextPing = Datetime.Now.AddDays(30),  .JobTitle = in_TransactionItem.SpecificContent(&quot;JobTitle&quot;).ToString,  .Manager = ManagerName,  .ManagerDone = false,  .ManagerEmail = ManagerEmail,  .ManagerInitialMessage = false,  .ManagerNextPing = Datetime.Now,  .Name = in_TransactionItem.SpecificContent(&quot;Name&quot;).ToString,  .NewHireInitialDM = false,  .Organization = in_TransactionItem.SpecificContent(&quot;Organization&quot;).ToString,  .VirtualDone = false,  .VirtualName = &quot;NotAllocated&quot;,  .VirtualSessionID = &quot;NotAllocated&quot; }]" OutputEntity="[CreatedRecord]" TimeoutInMs="30000">
       <uda:CreateEntityRecord.State>
         <udam:RecordState RequiredFieldCount="1">
           <udam:RecordState.SelectedFields>
@@ -399,11 +405,15 @@
                   <InArgument x:TypeArguments="x:String">[ManagerEmail]</InArgument>
                 </udam:DynamicEntityField.ArgumentValue>
               </udam:DynamicEntityField>
-              <udam:DynamicEntityField Id="941e424a-2bf8-f011-8d4c-000d3add7f02" Name="ManagerInitialMessage" />
+              <udam:DynamicEntityField Id="941e424a-2bf8-f011-8d4c-000d3add7f02" Name="ManagerInitialMessage">
+                <udam:DynamicEntityField.ArgumentValue>
+                  <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                </udam:DynamicEntityField.ArgumentValue>
+              </udam:DynamicEntityField>
               <udam:DynamicEntityField Id="e3b1668d-3e9f-f011-b3cd-002248a46af2" Name="ManagerLastPing" />
               <udam:DynamicEntityField Id="4ce50396-1df8-f011-8d4c-000d3add7f02" Name="ManagerNextPing">
                 <udam:DynamicEntityField.ArgumentValue>
-                  <InArgument x:TypeArguments="s:DateTime">[Datetime.Now.AddDays(2)]</InArgument>
+                  <InArgument x:TypeArguments="s:DateTime">[Datetime.Now]</InArgument>
                 </udam:DynamicEntityField.ArgumentValue>
               </udam:DynamicEntityField>
               <udam:DynamicEntityField Id="d0b1668d-3e9f-f011-b3cd-002248a46af2" Name="Name">
@@ -444,7 +454,7 @@
         </udam:RecordState>
       </uda:CreateEntityRecord.State>
     </uda:CreateEntityRecord>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="452,48" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="450,48" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="484,342" sap2010:WorkflowViewState.IdRef="Sequence_9">
           <sap:WorkflowViewStateService.ViewState>

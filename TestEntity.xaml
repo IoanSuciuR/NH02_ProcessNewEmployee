@@ -112,20 +112,22 @@
       <AssemblyReference>UiPath.System.Activities.Api</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="TestEntity" sap:VirtualizedContainerService.HintSize="978,1568" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="TestEntity" sap:VirtualizedContainerService.HintSize="841,6910" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="Counter" />
       <Variable x:TypeArguments="sd:DataTable" Name="EmTable" />
       <Variable x:TypeArguments="scg:IList(n:NewHireManagementEmployee)" Name="Records" />
       <Variable x:TypeArguments="scg:IEnumerable(ui:QueueItem)" Name="QIs" />
       <Variable x:TypeArguments="sd:DataTable" Name="DT" />
+      <Variable x:TypeArguments="sd:DataTable" Name="outputDT" />
+      <Variable x:TypeArguments="sd:DataTable" Name="Users" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="488,136" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="630,136" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
@@ -230,7 +232,7 @@
         </Sequence>
       </ui:CommentOut.Body>
     </ui:CommentOut>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="488,57" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="630,57" sap2010:WorkflowViewState.IdRef="CommentOut_3">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,376" sap2010:WorkflowViewState.IdRef="Sequence_24">
           <sap:WorkflowViewStateService.ViewState>
@@ -541,7 +543,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="488,57" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="630,57" sap2010:WorkflowViewState.IdRef="CommentOut_2">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,231" sap2010:WorkflowViewState.IdRef="Sequence_12">
           <sap:WorkflowViewStateService.ViewState>
@@ -581,216 +583,1245 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <uda:QueryEntityRecords x:TypeArguments="n:NewHireManagementEmployee" FilterArguments="{x:Null}" FilterValues="{x:Null}" TotalRecords="{x:Null}" ContinueOnError="False" DisplayName="Query Entity Records" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="488,180" sap2010:WorkflowViewState.IdRef="QueryEntityRecords`1_3" OutputRecords="[Records]" QueriedEntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" Skip="0" SortAscending="True" SortByField="Id" TimeoutInMs="30000" Top="1000" />
-    <ui:ForEach x:TypeArguments="n:NewHireManagementEmployee" CurrentIndex="{x:Null}" DisplayName="For Each currentNewHireManagementEmployee" sap:VirtualizedContainerService.HintSize="488,1115" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Records]">
-      <ui:ForEach.Body>
-        <ActivityAction x:TypeArguments="n:NewHireManagementEmployee">
+    <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[DT]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="630,120" sap2010:WorkflowViewState.IdRef="ReadRange_4" SheetName="Sheet2" WorkbookPath="Data\completed bootcamps 29 jan.xlsx" />
+    <Assign sap:VirtualizedContainerService.HintSize="630,175" sap2010:WorkflowViewState.IdRef="Assign_25">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[Counter]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">[0]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[DT]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="630,3960" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="n:NewHireManagementEmployee" Name="currentNewHireManagementEmployee" />
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="486,993" sap2010:WorkflowViewState.IdRef="Sequence_25">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,3778" sap2010:WorkflowViewState.IdRef="Sequence_55">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="452,57" sap2010:WorkflowViewState.IdRef="CommentOut_4">
-              <ui:CommentOut.Body>
-                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_30">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <If Condition="[string.IsNullOrEmpty(currentNewHireManagementEmployee.BootCampSessionID)]" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="If_7">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <If.Then>
-                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,375" sap2010:WorkflowViewState.IdRef="Sequence_26">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <uda:UpdateEntityRecord x:TypeArguments="n:NewHireManagementEmployee" InputEntity="{x:Null}" IsInRecordView="{x:Null}" OutputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Update Entity Record" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="416,311" sap2010:WorkflowViewState.IdRef="UpdateEntityRecord`1_1" InputEntityInFieldView="[new NH02_ProcessNewEmployee.NewHireManagementEmployee() With {  .BootcampName = &quot;NotAllocated&quot;,  .BootCampSessionID = &quot;NotAllocated&quot;, .Id = currentNewHireManagementEmployee.Id }]" RecordId="[currentNewHireManagementEmployee.Id]" TimeoutInMs="30000">
-                          <uda:UpdateEntityRecord.State>
-                            <udam:RecordState RequiredFieldCount="1">
-                              <udam:RecordState.SelectedFields>
-                                <scg:List x:TypeArguments="udam:DynamicEntityField" Capacity="2">
-                                  <udam:DynamicEntityField Id="e9eecf65-34ad-f011-8e61-0022489e60c3" Name="BootcampName">
-                                    <udam:DynamicEntityField.ArgumentValue>
-                                      <InArgument x:TypeArguments="x:String">NotAllocated</InArgument>
-                                    </udam:DynamicEntityField.ArgumentValue>
-                                  </udam:DynamicEntityField>
-                                  <udam:DynamicEntityField Id="e9b1668d-3e9f-f011-b3cd-002248a46af2" Name="BootCampSessionID">
-                                    <udam:DynamicEntityField.ArgumentValue>
-                                      <InArgument x:TypeArguments="x:String">NotAllocated</InArgument>
-                                    </udam:DynamicEntityField.ArgumentValue>
-                                  </udam:DynamicEntityField>
-                                </scg:List>
-                              </udam:RecordState.SelectedFields>
-                            </udam:RecordState>
-                          </uda:UpdateEntityRecord.State>
-                        </uda:UpdateEntityRecord>
-                      </Sequence>
-                    </If.Then>
-                    <If.Else>
-                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,94" sap2010:WorkflowViewState.IdRef="Sequence_27">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                      </Sequence>
-                    </If.Else>
-                  </If>
-                </Sequence>
-              </ui:CommentOut.Body>
+            <uda:CreateEntityRecord x:TypeArguments="n:NewHireManagementEmployee" InputEntity="{x:Null}" IsInRecordView="{x:Null}" OutputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Create Entity Record" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="416,3544" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_5" InputEntityInFieldView="[new NH02_ProcessNewEmployee.NewHireManagementEmployee() With {  .EmployeeID = &quot;Missing&quot; + Counter.ToString,  .BootCampDone = false,  .BootcampFilesCheckConfirm = true,  .BootcampFilesDone = true,  .BootcampManagerDM = true,  .BootcampName = &quot;NotAllocated&quot;,  .BootCampSessionID = &quot;NotAllocated&quot;,  .BootcampSlackChannelName = &quot;&quot;,  .BuddyDone = true,  .BuddyEmail = &quot;&quot;,  .BuddyInitialMessage = true,  .BusinessSite = &quot;Missing&quot;,  .CostCenter = &quot;Missing&quot;,  .CourseChapter = &quot;Missing&quot;,  .CourseDone = true,  .CoursePingDone = true,  .CourseProgression = &quot;&quot;,  .CourseReminderCount = 0D,  .Email = CurrentRow(0).ToString,  .FastStart17 = &quot;Missing&quot;,  .FastStart18 = &quot;Missing&quot;,  .FastStart20 = &quot;Missing&quot;,  .FastStart21 = &quot;Missing&quot;,  .FastStartCSM = &quot;Missing&quot;,  .FastStartSE = &quot;Missing&quot;,  .FastStartTAM = &quot;Missing&quot;,  .HireDate = Datetime.Now,  .HRContact = &quot;None&quot;,  .HRDone = true,  .HRInitialMessage = true,  .JobTitle = &quot;Missing&quot;,  .Manager = &quot;Missing&quot;,  .ManagerDone = true,  .ManagerEmail = &quot;Missing&quot;,  .Name = &quot;Missing&quot;,  .NewHireInitialDM = true,  .Organization = &quot;Missing&quot;,  .VirtualDone = false,  .VirtualName = &quot;NotAllocated&quot;,  .VirtualSessionID = &quot;NotAllocated&quot; }]" TimeoutInMs="30000">
+              <uda:CreateEntityRecord.State>
+                <udam:RecordState RequiredFieldCount="1">
+                  <udam:RecordState.SelectedFields>
+                    <scg:List x:TypeArguments="udam:DynamicEntityField" Capacity="65">
+                      <udam:DynamicEntityField Id="d1b1668d-3e9f-f011-b3cd-002248a46af2" IsRequired="True" Name="EmployeeID">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">["Missing" + Counter.ToString]</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="ecb1668d-3e9f-f011-b3cd-002248a46af2" Name="BootCampDone">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="eab1668d-3e9f-f011-b3cd-002248a46af2" Name="BootCampDoneTime" />
+                      <udam:DynamicEntityField Id="bd9adba8-419f-f011-b3cd-002248a46af2" Name="BootcampExtraFiles">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String" />
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="c19adba8-419f-f011-b3cd-002248a46af2" Name="BootcampFilesCheckConfirm">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="c09adba8-419f-f011-b3cd-002248a46af2" Name="BootcampFilesDone">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="be9adba8-419f-f011-b3cd-002248a46af2" Name="BootcampFilesDoneTime">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String" />
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="f6d0ebb0-55aa-f011-8e61-0022489e60c3" Name="BootcampFilesLastPing" />
+                      <udam:DynamicEntityField Id="a93b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="BootcampFilesNextPing" />
+                      <udam:DynamicEntityField Id="bb9adba8-419f-f011-b3cd-002248a46af2" Name="BootcampFlightFile">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String" />
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="bc9adba8-419f-f011-b3cd-002248a46af2" Name="BootcampHotelFile">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String" />
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="c9e4fd84-21f8-f011-8d4c-000d3add7f02" Name="BootcampManagerDM">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="e9eecf65-34ad-f011-8e61-0022489e60c3" Name="BootcampName">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">NotAllocated</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="e9b1668d-3e9f-f011-b3cd-002248a46af2" Name="BootCampSessionID">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">NotAllocated</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="93a75fa0-54aa-f011-8e61-0022489e60c3" Name="BootcampSlackChannelName">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">
+                            <Literal x:TypeArguments="x:String" Value="" />
+                          </InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="eaeecf65-34ad-f011-8e61-0022489e60c3" Name="BootcampStart" />
+                      <udam:DynamicEntityField Id="ddb1668d-3e9f-f011-b3cd-002248a46af2" Name="BuddyDone">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="dbb1668d-3e9f-f011-b3cd-002248a46af2" Name="BuddyDoneTime" />
+                      <udam:DynamicEntityField Id="dab1668d-3e9f-f011-b3cd-002248a46af2" Name="BuddyEmail">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">
+                            <Literal x:TypeArguments="x:String" Value="" />
+                          </InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="951e424a-2bf8-f011-8d4c-000d3add7f02" Name="BuddyInitialMessage">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="dcb1668d-3e9f-f011-b3cd-002248a46af2" Name="BuddyLastPing" />
+                      <udam:DynamicEntityField Id="e513bd96-29f8-f011-8d4c-000d3add7f02" Name="BuddyNextPing" />
+                      <udam:DynamicEntityField Id="d9b1668d-3e9f-f011-b3cd-002248a46af2" Name="BusinessSite">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">Missing</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="d8b1668d-3e9f-f011-b3cd-002248a46af2" Name="CostCenter">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">Missing</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="f2b1668d-3e9f-f011-b3cd-002248a46af2" Name="CourseChapter">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">Missing</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="f6b1668d-3e9f-f011-b3cd-002248a46af2" Name="CourseDone">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="f4b1668d-3e9f-f011-b3cd-002248a46af2" Name="CourseEndDate" />
+                      <udam:DynamicEntityField Id="f5b1668d-3e9f-f011-b3cd-002248a46af2" Name="CourseLastPing" />
+                      <udam:DynamicEntityField Id="3509d6f3-1bf8-f011-8d4c-000d3add7f02" Name="CourseNextPing" />
+                      <udam:DynamicEntityField Id="3609d6f3-1bf8-f011-8d4c-000d3add7f02" Name="CoursePingDone">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="f1b1668d-3e9f-f011-b3cd-002248a46af2" Name="CourseProgression">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">
+                            <Literal x:TypeArguments="x:String" Value="" />
+                          </InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="1a027fe7-1ef8-f011-8d4c-000d3add7f02" Name="CourseReminderCount">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:Decimal">0</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="f3b1668d-3e9f-f011-b3cd-002248a46af2" Name="CourseStartDate" />
+                      <udam:DynamicEntityField Id="d4b1668d-3e9f-f011-b3cd-002248a46af2" Name="Email">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">[CurrentRow(0).ToString]</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="aa3b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStart17">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">Missing</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="ab3b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStart18">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">Missing</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="ac3b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStart20">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">Missing</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="ad3b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStart21">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">Missing</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="ae3b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStartCSM">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">Missing</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="b03b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStartSE">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">Missing</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="af3b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStartTAM">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">Missing</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="d2b1668d-3e9f-f011-b3cd-002248a46af2" Name="HireDate">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="s:DateTime">[Datetime.Now]</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="deb1668d-3e9f-f011-b3cd-002248a46af2" Name="HRContact">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">None</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="e1b1668d-3e9f-f011-b3cd-002248a46af2" Name="HRDone">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="dfb1668d-3e9f-f011-b3cd-002248a46af2" Name="HRDoneTine" />
+                      <udam:DynamicEntityField Id="961e424a-2bf8-f011-8d4c-000d3add7f02" Name="HRInitialMessage">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="e0b1668d-3e9f-f011-b3cd-002248a46af2" Name="HRLastPint" />
+                      <udam:DynamicEntityField Id="4de50396-1df8-f011-8d4c-000d3add7f02" Name="HRNextPing" />
+                      <udam:DynamicEntityField Id="d3b1668d-3e9f-f011-b3cd-002248a46af2" Name="JobTitle">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">Missing</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="d5b1668d-3e9f-f011-b3cd-002248a46af2" Name="Manager">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">Missing</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="e4b1668d-3e9f-f011-b3cd-002248a46af2" Name="ManagerDone">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="e2b1668d-3e9f-f011-b3cd-002248a46af2" Name="ManagerDoneTime" />
+                      <udam:DynamicEntityField Id="d6b1668d-3e9f-f011-b3cd-002248a46af2" Name="ManagerEmail">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">Missing</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="941e424a-2bf8-f011-8d4c-000d3add7f02" Name="ManagerInitialMessage" />
+                      <udam:DynamicEntityField Id="e3b1668d-3e9f-f011-b3cd-002248a46af2" Name="ManagerLastPing" />
+                      <udam:DynamicEntityField Id="4ce50396-1df8-f011-8d4c-000d3add7f02" Name="ManagerNextPing" />
+                      <udam:DynamicEntityField Id="d0b1668d-3e9f-f011-b3cd-002248a46af2" Name="Name">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">Missing</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="e7739317-f5a7-f011-8e61-0022489e60c3" Name="NewHireInitialDM">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="d7b1668d-3e9f-f011-b3cd-002248a46af2" Name="Organization">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">Missing</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="e8b1668d-3e9f-f011-b3cd-002248a46af2" Name="VirtualDone">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="e6b1668d-3e9f-f011-b3cd-002248a46af2" Name="VirtualDoneTime" />
+                      <udam:DynamicEntityField Id="e7b1668d-3e9f-f011-b3cd-002248a46af2" Name="VirtualLastPing" />
+                      <udam:DynamicEntityField Id="e5f3a906-29ad-f011-8e61-0022489e60c3" Name="VirtualName">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">NotAllocated</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="e5b1668d-3e9f-f011-b3cd-002248a46af2" Name="VirtualSessionID">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">NotAllocated</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="8fa0836b-29ad-f011-8e61-0022489e60c3" Name="VirtualStart" />
+                    </scg:List>
+                  </udam:RecordState.SelectedFields>
+                </udam:RecordState>
+              </uda:CreateEntityRecord.State>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-            </ui:CommentOut>
-            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="452,61" sap2010:WorkflowViewState.IdRef="CommentOut_5">
-              <ui:CommentOut.Body>
-                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,108" sap2010:WorkflowViewState.IdRef="Sequence_31">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <If Condition="[string.IsNullOrEmpty(currentNewHireManagementEmployee.VirtualSessionID)]" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="If_8">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <If.Then>
-                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,375" sap2010:WorkflowViewState.IdRef="Sequence_28">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <uda:UpdateEntityRecord x:TypeArguments="n:NewHireManagementEmployee" InputEntity="{x:Null}" IsInRecordView="{x:Null}" OutputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Update Entity Record" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="416,311" sap2010:WorkflowViewState.IdRef="UpdateEntityRecord`1_2" InputEntityInFieldView="[new NH02_ProcessNewEmployee.NewHireManagementEmployee() With {  .VirtualName = &quot;NotAllocated&quot;,  .VirtualSessionID = &quot;NotAllocated&quot;, .Id = currentNewHireManagementEmployee.Id }]" RecordId="[currentNewHireManagementEmployee.Id]" TimeoutInMs="30000">
-                          <uda:UpdateEntityRecord.State>
-                            <udam:RecordState RequiredFieldCount="1">
-                              <udam:RecordState.SelectedFields>
-                                <scg:List x:TypeArguments="udam:DynamicEntityField" Capacity="2">
-                                  <udam:DynamicEntityField Id="e5f3a906-29ad-f011-8e61-0022489e60c3" Name="VirtualName">
-                                    <udam:DynamicEntityField.ArgumentValue>
-                                      <InArgument x:TypeArguments="x:String">NotAllocated</InArgument>
-                                    </udam:DynamicEntityField.ArgumentValue>
-                                  </udam:DynamicEntityField>
-                                  <udam:DynamicEntityField Id="e5b1668d-3e9f-f011-b3cd-002248a46af2" Name="VirtualSessionID">
-                                    <udam:DynamicEntityField.ArgumentValue>
-                                      <InArgument x:TypeArguments="x:String">NotAllocated</InArgument>
-                                    </udam:DynamicEntityField.ArgumentValue>
-                                  </udam:DynamicEntityField>
-                                </scg:List>
-                              </udam:RecordState.SelectedFields>
-                            </udam:RecordState>
-                          </uda:UpdateEntityRecord.State>
-                        </uda:UpdateEntityRecord>
-                      </Sequence>
-                    </If.Then>
-                    <If.Else>
-                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,94" sap2010:WorkflowViewState.IdRef="Sequence_29">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                      </Sequence>
-                    </If.Else>
-                  </If>
-                </Sequence>
-              </ui:CommentOut.Body>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:CommentOut>
-            <If Condition="[currentNewHireManagementEmployee.CourseDone.Value]" sap:VirtualizedContainerService.HintSize="452,811" sap2010:WorkflowViewState.IdRef="If_9">
-              <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,583" sap2010:WorkflowViewState.IdRef="Sequence_32">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <uda:UpdateEntityRecord x:TypeArguments="n:NewHireManagementEmployee" InputEntity="{x:Null}" IsInRecordView="{x:Null}" OutputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Update Entity Record" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="416,519" sap2010:WorkflowViewState.IdRef="UpdateEntityRecord`1_3" InputEntityInFieldView="[new NH02_ProcessNewEmployee.NewHireManagementEmployee() With {  .FastStart17 = &quot;100%&quot;,  .FastStart18 = &quot;100%&quot;,  .FastStart20 = &quot;100%&quot;,  .FastStartCSM = &quot;100%&quot;,  .FastStartSE = &quot;100%&quot;,  .FastStartTAM = &quot;100%&quot;, .Id = currentNewHireManagementEmployee.Id }]" RecordId="[currentNewHireManagementEmployee.Id]" TimeoutInMs="30000">
-                    <uda:UpdateEntityRecord.State>
-                      <udam:RecordState RequiredFieldCount="1">
-                        <udam:RecordState.SelectedFields>
-                          <scg:List x:TypeArguments="udam:DynamicEntityField" Capacity="6">
-                            <udam:DynamicEntityField Id="aa3b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStart17">
-                              <udam:DynamicEntityField.ArgumentValue>
-                                <InArgument x:TypeArguments="x:String">100%</InArgument>
-                              </udam:DynamicEntityField.ArgumentValue>
-                            </udam:DynamicEntityField>
-                            <udam:DynamicEntityField Id="ab3b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStart18">
-                              <udam:DynamicEntityField.ArgumentValue>
-                                <InArgument x:TypeArguments="x:String">100%</InArgument>
-                              </udam:DynamicEntityField.ArgumentValue>
-                            </udam:DynamicEntityField>
-                            <udam:DynamicEntityField Id="ac3b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStart20">
-                              <udam:DynamicEntityField.ArgumentValue>
-                                <InArgument x:TypeArguments="x:String">100%</InArgument>
-                              </udam:DynamicEntityField.ArgumentValue>
-                            </udam:DynamicEntityField>
-                            <udam:DynamicEntityField Id="ae3b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStartCSM">
-                              <udam:DynamicEntityField.ArgumentValue>
-                                <InArgument x:TypeArguments="x:String">100%</InArgument>
-                              </udam:DynamicEntityField.ArgumentValue>
-                            </udam:DynamicEntityField>
-                            <udam:DynamicEntityField Id="b03b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStartSE">
-                              <udam:DynamicEntityField.ArgumentValue>
-                                <InArgument x:TypeArguments="x:String">100%</InArgument>
-                              </udam:DynamicEntityField.ArgumentValue>
-                            </udam:DynamicEntityField>
-                            <udam:DynamicEntityField Id="af3b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStartTAM">
-                              <udam:DynamicEntityField.ArgumentValue>
-                                <InArgument x:TypeArguments="x:String">100%</InArgument>
-                              </udam:DynamicEntityField.ArgumentValue>
-                            </udam:DynamicEntityField>
-                          </scg:List>
-                        </udam:RecordState.SelectedFields>
-                      </udam:RecordState>
-                    </uda:UpdateEntityRecord.State>
-                  </uda:UpdateEntityRecord>
-                </Sequence>
-              </If.Then>
-              <If.Else>
-                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,94" sap2010:WorkflowViewState.IdRef="Sequence_33">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </Sequence>
-              </If.Else>
-            </If>
+            </uda:CreateEntityRecord>
+            <Assign sap:VirtualizedContainerService.HintSize="416,170" sap2010:WorkflowViewState.IdRef="Assign_26">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[Counter]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">[Counter + 1]</InArgument>
+              </Assign.Value>
+            </Assign>
           </Sequence>
         </ActivityAction>
-      </ui:ForEach.Body>
+      </ui:ForEachRow.Body>
+    </ui:ForEachRow>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="630,282" sap2010:WorkflowViewState.IdRef="CommentOut_12">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,171" sap2010:WorkflowViewState.IdRef="Sequence_54">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[Users]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="416,111" sap2010:WorkflowViewState.IdRef="ReadRange_5" SheetName="sheet1" WorkbookPath="C:\Users\Asus\Desktop\out.xlsx" />
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="630,2052" sap2010:WorkflowViewState.IdRef="CommentOut_11">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="594,1941" sap2010:WorkflowViewState.IdRef="Sequence_53">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[DT]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="560,1881" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
+            <ui:ForEachRow.Body>
+              <ActivityAction x:TypeArguments="sd:DataRow">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="558,1708" sap2010:WorkflowViewState.IdRef="Sequence_44">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If Condition="[Users.AsEnumerable.Any(function(r) r(&quot;Worker_Email_Address&quot;).ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)]" sap:VirtualizedContainerService.HintSize="524,1644" sap2010:WorkflowViewState.IdRef="If_13">
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="522,1105" sap2010:WorkflowViewState.IdRef="Sequence_45">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="488,179" sap2010:WorkflowViewState.IdRef="LogMessage_12" Message="[&quot;found &quot; + CurrentRow(0).ToString]" />
+                        <If Condition="[CurrentRow(1).ToString.ToLower = &quot;done&quot;]" sap:VirtualizedContainerService.HintSize="488,862" sap2010:WorkflowViewState.IdRef="If_14">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="486,116" sap2010:WorkflowViewState.IdRef="Sequence_47">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="452,52" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <TryCatch.Try>
+                                  <uda:CreateEntityRecord x:TypeArguments="n:NewHireManagementEmployee" InputEntity="{x:Null}" IsInRecordView="{x:Null}" OutputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Create Entity Record" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_3" InputEntityInFieldView="[new NH02_ProcessNewEmployee.NewHireManagementEmployee() With {  .EmployeeID = Users.AsEnumerable.First(function(r) r(&quot;Worker_Email_Address&quot;).ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)(&quot;Worker_ID&quot;).ToString,  .BootCampDone = true,  .BootcampFilesCheckConfirm = true,  .BootcampFilesDone = true,  .BootcampManagerDM = true,  .BootcampName = &quot;NotAllocated&quot;,  .BootCampSessionID = &quot;NotAllocated&quot;,  .BootcampSlackChannelName = &quot;&quot;,  .BuddyDone = true,  .BuddyEmail = &quot;&quot;,  .BuddyInitialMessage = true,  .BusinessSite = &quot;None&quot;,  .CostCenter = &quot;None&quot;,  .CourseChapter = &quot;&quot;,  .CourseDone = true,  .CoursePingDone = true,  .CourseProgression = &quot;&quot;,  .CourseReminderCount = 0D,  .Email = Users.AsEnumerable.First(function(r) r(&quot;Worker_Email_Address&quot;).ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)(&quot;Worker_Email_Address&quot;).ToString,  .HireDate = Date.Parse(Users.AsEnumerable.First(function(r) r(&quot;Worker_Email_Address&quot;).ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)(&quot;Hire_Date&quot;).ToString),  .HRContact = &quot;None&quot;,  .HRDone = true,  .HRInitialMessage = true,  .HRNextPing = Datetime.Now.AddDays(30),  .JobTitle = Users.AsEnumerable.First(function(r) r(&quot;Worker_Email_Address&quot;).ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)(&quot;Job_Title&quot;).ToString,  .Manager = Users.AsEnumerable.First(function(r) r(&quot;Worker_Email_Address&quot;).ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)(&quot;Manager_Name&quot;).ToString,  .ManagerDone = true,  .ManagerEmail = Users.AsEnumerable.First(function(r) r(&quot;Worker_Email_Address&quot;).ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)(&quot;Manager_Email&quot;).ToString,  .ManagerInitialMessage = true,  .ManagerNextPing = Datetime.Now.AddDays(2),  .Name = Users.AsEnumerable.First(function(r) r(&quot;Worker_Email_Address&quot;).ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)(&quot;Legal_Full_Name&quot;).ToString,  .NewHireInitialDM = true,  .Organization = &quot;None&quot;,  .VirtualDone = true,  .VirtualName = &quot;NotAllocated&quot;,  .VirtualSessionID = &quot;NotAllocated&quot; }]" TimeoutInMs="30000">
+                                    <uda:CreateEntityRecord.State>
+                                      <udam:RecordState RequiredFieldCount="1">
+                                        <udam:RecordState.SelectedFields>
+                                          <scg:List x:TypeArguments="udam:DynamicEntityField" Capacity="65">
+                                            <udam:DynamicEntityField Id="d1b1668d-3e9f-f011-b3cd-002248a46af2" IsRequired="True" Name="EmployeeID">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">[Users.AsEnumerable.First(function(r) r("Worker_Email_Address").ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)("Worker_ID").ToString]</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="ecb1668d-3e9f-f011-b3cd-002248a46af2" Name="BootCampDone">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="eab1668d-3e9f-f011-b3cd-002248a46af2" Name="BootCampDoneTime" />
+                                            <udam:DynamicEntityField Id="bd9adba8-419f-f011-b3cd-002248a46af2" Name="BootcampExtraFiles">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String" />
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="c19adba8-419f-f011-b3cd-002248a46af2" Name="BootcampFilesCheckConfirm">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="c09adba8-419f-f011-b3cd-002248a46af2" Name="BootcampFilesDone">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="be9adba8-419f-f011-b3cd-002248a46af2" Name="BootcampFilesDoneTime">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String" />
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="f6d0ebb0-55aa-f011-8e61-0022489e60c3" Name="BootcampFilesLastPing" />
+                                            <udam:DynamicEntityField Id="a93b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="BootcampFilesNextPing" />
+                                            <udam:DynamicEntityField Id="bb9adba8-419f-f011-b3cd-002248a46af2" Name="BootcampFlightFile">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String" />
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="bc9adba8-419f-f011-b3cd-002248a46af2" Name="BootcampHotelFile">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String" />
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="c9e4fd84-21f8-f011-8d4c-000d3add7f02" Name="BootcampManagerDM">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="e9eecf65-34ad-f011-8e61-0022489e60c3" Name="BootcampName">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">NotAllocated</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="e9b1668d-3e9f-f011-b3cd-002248a46af2" Name="BootCampSessionID">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">NotAllocated</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="93a75fa0-54aa-f011-8e61-0022489e60c3" Name="BootcampSlackChannelName">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">
+                                                  <Literal x:TypeArguments="x:String" Value="" />
+                                                </InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="eaeecf65-34ad-f011-8e61-0022489e60c3" Name="BootcampStart" />
+                                            <udam:DynamicEntityField Id="ddb1668d-3e9f-f011-b3cd-002248a46af2" Name="BuddyDone">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="dbb1668d-3e9f-f011-b3cd-002248a46af2" Name="BuddyDoneTime" />
+                                            <udam:DynamicEntityField Id="dab1668d-3e9f-f011-b3cd-002248a46af2" Name="BuddyEmail">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">
+                                                  <Literal x:TypeArguments="x:String" Value="" />
+                                                </InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="951e424a-2bf8-f011-8d4c-000d3add7f02" Name="BuddyInitialMessage">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="dcb1668d-3e9f-f011-b3cd-002248a46af2" Name="BuddyLastPing" />
+                                            <udam:DynamicEntityField Id="e513bd96-29f8-f011-8d4c-000d3add7f02" Name="BuddyNextPing" />
+                                            <udam:DynamicEntityField Id="d9b1668d-3e9f-f011-b3cd-002248a46af2" Name="BusinessSite">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">None</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="d8b1668d-3e9f-f011-b3cd-002248a46af2" Name="CostCenter">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">None</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="f2b1668d-3e9f-f011-b3cd-002248a46af2" Name="CourseChapter">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">
+                                                  <Literal x:TypeArguments="x:String" Value="" />
+                                                </InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="f6b1668d-3e9f-f011-b3cd-002248a46af2" Name="CourseDone">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="f4b1668d-3e9f-f011-b3cd-002248a46af2" Name="CourseEndDate" />
+                                            <udam:DynamicEntityField Id="f5b1668d-3e9f-f011-b3cd-002248a46af2" Name="CourseLastPing" />
+                                            <udam:DynamicEntityField Id="3509d6f3-1bf8-f011-8d4c-000d3add7f02" Name="CourseNextPing" />
+                                            <udam:DynamicEntityField Id="3609d6f3-1bf8-f011-8d4c-000d3add7f02" Name="CoursePingDone">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="f1b1668d-3e9f-f011-b3cd-002248a46af2" Name="CourseProgression">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">
+                                                  <Literal x:TypeArguments="x:String" Value="" />
+                                                </InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="1a027fe7-1ef8-f011-8d4c-000d3add7f02" Name="CourseReminderCount">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Decimal">0</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="f3b1668d-3e9f-f011-b3cd-002248a46af2" Name="CourseStartDate" />
+                                            <udam:DynamicEntityField Id="d4b1668d-3e9f-f011-b3cd-002248a46af2" Name="Email">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">[Users.AsEnumerable.First(function(r) r("Worker_Email_Address").ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)("Worker_Email_Address").ToString]</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="aa3b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStart17">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String" />
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="ab3b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStart18">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String" />
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="ac3b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStart20">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String" />
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="ad3b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStart21">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String" />
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="ae3b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStartCSM">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String" />
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="b03b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStartSE">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String" />
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="af3b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStartTAM">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String" />
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="d2b1668d-3e9f-f011-b3cd-002248a46af2" Name="HireDate">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="s:DateTime">[Date.Parse(Users.AsEnumerable.First(function(r) r("Worker_Email_Address").ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)("Hire_Date").ToString)]</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="deb1668d-3e9f-f011-b3cd-002248a46af2" Name="HRContact">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">None</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="e1b1668d-3e9f-f011-b3cd-002248a46af2" Name="HRDone">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="dfb1668d-3e9f-f011-b3cd-002248a46af2" Name="HRDoneTine" />
+                                            <udam:DynamicEntityField Id="961e424a-2bf8-f011-8d4c-000d3add7f02" Name="HRInitialMessage">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="e0b1668d-3e9f-f011-b3cd-002248a46af2" Name="HRLastPint" />
+                                            <udam:DynamicEntityField Id="4de50396-1df8-f011-8d4c-000d3add7f02" Name="HRNextPing">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="s:DateTime">[Datetime.Now.AddDays(30)]</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="d3b1668d-3e9f-f011-b3cd-002248a46af2" Name="JobTitle">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">[Users.AsEnumerable.First(function(r) r("Worker_Email_Address").ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)("Job_Title").ToString]</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="d5b1668d-3e9f-f011-b3cd-002248a46af2" Name="Manager">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">[Users.AsEnumerable.First(function(r) r("Worker_Email_Address").ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)("Manager_Name").ToString]</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="e4b1668d-3e9f-f011-b3cd-002248a46af2" Name="ManagerDone">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="e2b1668d-3e9f-f011-b3cd-002248a46af2" Name="ManagerDoneTime" />
+                                            <udam:DynamicEntityField Id="d6b1668d-3e9f-f011-b3cd-002248a46af2" Name="ManagerEmail">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">[Users.AsEnumerable.First(function(r) r("Worker_Email_Address").ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)("Manager_Email").ToString]</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="941e424a-2bf8-f011-8d4c-000d3add7f02" Name="ManagerInitialMessage">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="e3b1668d-3e9f-f011-b3cd-002248a46af2" Name="ManagerLastPing" />
+                                            <udam:DynamicEntityField Id="4ce50396-1df8-f011-8d4c-000d3add7f02" Name="ManagerNextPing">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="s:DateTime">[Datetime.Now.AddDays(2)]</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="d0b1668d-3e9f-f011-b3cd-002248a46af2" Name="Name">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">[Users.AsEnumerable.First(function(r) r("Worker_Email_Address").ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)("Legal_Full_Name").ToString]</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="e7739317-f5a7-f011-8e61-0022489e60c3" Name="NewHireInitialDM">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="d7b1668d-3e9f-f011-b3cd-002248a46af2" Name="Organization">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">None</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="e8b1668d-3e9f-f011-b3cd-002248a46af2" Name="VirtualDone">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="e6b1668d-3e9f-f011-b3cd-002248a46af2" Name="VirtualDoneTime" />
+                                            <udam:DynamicEntityField Id="e7b1668d-3e9f-f011-b3cd-002248a46af2" Name="VirtualLastPing" />
+                                            <udam:DynamicEntityField Id="e5f3a906-29ad-f011-8e61-0022489e60c3" Name="VirtualName">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">NotAllocated</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="e5b1668d-3e9f-f011-b3cd-002248a46af2" Name="VirtualSessionID">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">NotAllocated</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="8fa0836b-29ad-f011-8e61-0022489e60c3" Name="VirtualStart" />
+                                          </scg:List>
+                                        </udam:RecordState.SelectedFields>
+                                      </udam:RecordState>
+                                    </uda:CreateEntityRecord.State>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </uda:CreateEntityRecord>
+                                </TryCatch.Try>
+                                <TryCatch.Catches>
+                                  <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                                    <ActivityAction x:TypeArguments="s:Exception">
+                                      <ActivityAction.Argument>
+                                        <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                      </ActivityAction.Argument>
+                                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,234" sap2010:WorkflowViewState.IdRef="Sequence_49">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,170" sap2010:WorkflowViewState.IdRef="LogMessage_14" Message="[&quot;Failed&quot; + Users.AsEnumerable.First(function(r) r(&quot;Worker_Email_Address&quot;).ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)(&quot;Worker_ID&quot;).ToString]" />
+                                      </Sequence>
+                                    </ActivityAction>
+                                  </Catch>
+                                </TryCatch.Catches>
+                                <TryCatch.Finally>
+                                  <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="450,94" sap2010:WorkflowViewState.IdRef="Sequence_50">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </Sequence>
+                                </TryCatch.Finally>
+                              </TryCatch>
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="486,612" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="452,548" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+                                <TryCatch.Try>
+                                  <uda:CreateEntityRecord x:TypeArguments="n:NewHireManagementEmployee" InputEntity="{x:Null}" IsInRecordView="{x:Null}" OutputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Create Entity Record" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_2" InputEntityInFieldView="[new NH02_ProcessNewEmployee.NewHireManagementEmployee() With {  .EmployeeID = Users.AsEnumerable.First(function(r) r(&quot;Worker_Email_Address&quot;).ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)(&quot;Worker_ID&quot;).ToString,  .BootCampDone = false,  .BootcampFilesCheckConfirm = false,  .BootcampFilesDone = false,  .BootcampManagerDM = false,  .BootcampName = &quot;NotAllocated&quot;,  .BootCampSessionID = &quot;NotAllocated&quot;,  .BootcampSlackChannelName = &quot;&quot;,  .BuddyDone = false,  .BuddyEmail = &quot;&quot;,  .BuddyInitialMessage = false,  .BusinessSite = &quot;None&quot;,  .CostCenter = &quot;None&quot;,  .CourseChapter = &quot;&quot;,  .CourseDone = false,  .CoursePingDone = false,  .CourseProgression = &quot;&quot;,  .CourseReminderCount = 0D,  .Email = Users.AsEnumerable.First(function(r) r(&quot;Worker_Email_Address&quot;).ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)(&quot;Worker_Email_Address&quot;).ToString,  .HireDate = Date.Parse(Users.AsEnumerable.First(function(r) r(&quot;Worker_Email_Address&quot;).ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)(&quot;Hire_Date&quot;).ToString),  .HRContact = &quot;None&quot;,  .HRDone = true,  .HRInitialMessage = true,  .HRNextPing = Datetime.Now.AddDays(30),  .JobTitle = Users.AsEnumerable.First(function(r) r(&quot;Worker_Email_Address&quot;).ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)(&quot;Job_Title&quot;).ToString,  .Manager = Users.AsEnumerable.First(function(r) r(&quot;Worker_Email_Address&quot;).ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)(&quot;Manager_Name&quot;).ToString,  .ManagerDone = false,  .ManagerEmail = CurrentRow(&quot;Manager_Email&quot;).ToString,  .ManagerNextPing = Datetime.Now.AddDays(2),  .Name = Users.AsEnumerable.First(function(r) r(&quot;Worker_Email_Address&quot;).ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)(&quot;Legal_Full_Name&quot;).ToString,  .NewHireInitialDM = false,  .Organization = &quot;None&quot;,  .VirtualDone = false,  .VirtualName = &quot;NotAllocated&quot;,  .VirtualSessionID = &quot;NotAllocated&quot; }]" TimeoutInMs="30000">
+                                    <uda:CreateEntityRecord.State>
+                                      <udam:RecordState RequiredFieldCount="1">
+                                        <udam:RecordState.SelectedFields>
+                                          <scg:List x:TypeArguments="udam:DynamicEntityField" Capacity="65">
+                                            <udam:DynamicEntityField Id="d1b1668d-3e9f-f011-b3cd-002248a46af2" IsRequired="True" Name="EmployeeID">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">[Users.AsEnumerable.First(function(r) r("Worker_Email_Address").ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)("Worker_ID").ToString]</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="ecb1668d-3e9f-f011-b3cd-002248a46af2" Name="BootCampDone">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="eab1668d-3e9f-f011-b3cd-002248a46af2" Name="BootCampDoneTime" />
+                                            <udam:DynamicEntityField Id="bd9adba8-419f-f011-b3cd-002248a46af2" Name="BootcampExtraFiles">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String" />
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="c19adba8-419f-f011-b3cd-002248a46af2" Name="BootcampFilesCheckConfirm">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="c09adba8-419f-f011-b3cd-002248a46af2" Name="BootcampFilesDone">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="be9adba8-419f-f011-b3cd-002248a46af2" Name="BootcampFilesDoneTime">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String" />
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="f6d0ebb0-55aa-f011-8e61-0022489e60c3" Name="BootcampFilesLastPing" />
+                                            <udam:DynamicEntityField Id="a93b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="BootcampFilesNextPing" />
+                                            <udam:DynamicEntityField Id="bb9adba8-419f-f011-b3cd-002248a46af2" Name="BootcampFlightFile">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String" />
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="bc9adba8-419f-f011-b3cd-002248a46af2" Name="BootcampHotelFile">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String" />
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="c9e4fd84-21f8-f011-8d4c-000d3add7f02" Name="BootcampManagerDM">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="e9eecf65-34ad-f011-8e61-0022489e60c3" Name="BootcampName">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">NotAllocated</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="e9b1668d-3e9f-f011-b3cd-002248a46af2" Name="BootCampSessionID">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">NotAllocated</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="93a75fa0-54aa-f011-8e61-0022489e60c3" Name="BootcampSlackChannelName">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">
+                                                  <Literal x:TypeArguments="x:String" Value="" />
+                                                </InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="eaeecf65-34ad-f011-8e61-0022489e60c3" Name="BootcampStart" />
+                                            <udam:DynamicEntityField Id="ddb1668d-3e9f-f011-b3cd-002248a46af2" Name="BuddyDone">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="dbb1668d-3e9f-f011-b3cd-002248a46af2" Name="BuddyDoneTime" />
+                                            <udam:DynamicEntityField Id="dab1668d-3e9f-f011-b3cd-002248a46af2" Name="BuddyEmail">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">
+                                                  <Literal x:TypeArguments="x:String" Value="" />
+                                                </InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="951e424a-2bf8-f011-8d4c-000d3add7f02" Name="BuddyInitialMessage">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="dcb1668d-3e9f-f011-b3cd-002248a46af2" Name="BuddyLastPing" />
+                                            <udam:DynamicEntityField Id="e513bd96-29f8-f011-8d4c-000d3add7f02" Name="BuddyNextPing" />
+                                            <udam:DynamicEntityField Id="d9b1668d-3e9f-f011-b3cd-002248a46af2" Name="BusinessSite">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">None</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="d8b1668d-3e9f-f011-b3cd-002248a46af2" Name="CostCenter">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">None</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="f2b1668d-3e9f-f011-b3cd-002248a46af2" Name="CourseChapter">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">
+                                                  <Literal x:TypeArguments="x:String" Value="" />
+                                                </InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="f6b1668d-3e9f-f011-b3cd-002248a46af2" Name="CourseDone">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="f4b1668d-3e9f-f011-b3cd-002248a46af2" Name="CourseEndDate" />
+                                            <udam:DynamicEntityField Id="f5b1668d-3e9f-f011-b3cd-002248a46af2" Name="CourseLastPing" />
+                                            <udam:DynamicEntityField Id="3509d6f3-1bf8-f011-8d4c-000d3add7f02" Name="CourseNextPing" />
+                                            <udam:DynamicEntityField Id="3609d6f3-1bf8-f011-8d4c-000d3add7f02" Name="CoursePingDone">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="f1b1668d-3e9f-f011-b3cd-002248a46af2" Name="CourseProgression">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">
+                                                  <Literal x:TypeArguments="x:String" Value="" />
+                                                </InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="1a027fe7-1ef8-f011-8d4c-000d3add7f02" Name="CourseReminderCount">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Decimal">0</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="f3b1668d-3e9f-f011-b3cd-002248a46af2" Name="CourseStartDate" />
+                                            <udam:DynamicEntityField Id="d4b1668d-3e9f-f011-b3cd-002248a46af2" Name="Email">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">[Users.AsEnumerable.First(function(r) r("Worker_Email_Address").ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)("Worker_Email_Address").ToString]</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="aa3b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStart17">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String" />
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="ab3b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStart18">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String" />
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="ac3b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStart20">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String" />
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="ad3b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStart21">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String" />
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="ae3b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStartCSM">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String" />
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="b03b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStartSE">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String" />
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="af3b5ad1-d3fc-f011-8d4c-000d3add7f02" Name="FastStartTAM">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String" />
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="d2b1668d-3e9f-f011-b3cd-002248a46af2" Name="HireDate">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="s:DateTime">[Date.Parse(Users.AsEnumerable.First(function(r) r("Worker_Email_Address").ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)("Hire_Date").ToString)]</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="deb1668d-3e9f-f011-b3cd-002248a46af2" Name="HRContact">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">None</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="e1b1668d-3e9f-f011-b3cd-002248a46af2" Name="HRDone">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="dfb1668d-3e9f-f011-b3cd-002248a46af2" Name="HRDoneTine" />
+                                            <udam:DynamicEntityField Id="961e424a-2bf8-f011-8d4c-000d3add7f02" Name="HRInitialMessage">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="e0b1668d-3e9f-f011-b3cd-002248a46af2" Name="HRLastPint" />
+                                            <udam:DynamicEntityField Id="4de50396-1df8-f011-8d4c-000d3add7f02" Name="HRNextPing">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="s:DateTime">[Datetime.Now.AddDays(30)]</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="d3b1668d-3e9f-f011-b3cd-002248a46af2" Name="JobTitle">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">[Users.AsEnumerable.First(function(r) r("Worker_Email_Address").ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)("Job_Title").ToString]</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="d5b1668d-3e9f-f011-b3cd-002248a46af2" Name="Manager">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">[Users.AsEnumerable.First(function(r) r("Worker_Email_Address").ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)("Manager_Name").ToString]</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="e4b1668d-3e9f-f011-b3cd-002248a46af2" Name="ManagerDone">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="e2b1668d-3e9f-f011-b3cd-002248a46af2" Name="ManagerDoneTime" />
+                                            <udam:DynamicEntityField Id="d6b1668d-3e9f-f011-b3cd-002248a46af2" Name="ManagerEmail">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">[CurrentRow("Manager_Email").ToString]</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="941e424a-2bf8-f011-8d4c-000d3add7f02" Name="ManagerInitialMessage" />
+                                            <udam:DynamicEntityField Id="e3b1668d-3e9f-f011-b3cd-002248a46af2" Name="ManagerLastPing" />
+                                            <udam:DynamicEntityField Id="4ce50396-1df8-f011-8d4c-000d3add7f02" Name="ManagerNextPing">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="s:DateTime">[Datetime.Now.AddDays(2)]</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="d0b1668d-3e9f-f011-b3cd-002248a46af2" Name="Name">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">[Users.AsEnumerable.First(function(r) r("Worker_Email_Address").ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)("Legal_Full_Name").ToString]</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="e7739317-f5a7-f011-8e61-0022489e60c3" Name="NewHireInitialDM">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="d7b1668d-3e9f-f011-b3cd-002248a46af2" Name="Organization">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">None</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="e8b1668d-3e9f-f011-b3cd-002248a46af2" Name="VirtualDone">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="e6b1668d-3e9f-f011-b3cd-002248a46af2" Name="VirtualDoneTime" />
+                                            <udam:DynamicEntityField Id="e7b1668d-3e9f-f011-b3cd-002248a46af2" Name="VirtualLastPing" />
+                                            <udam:DynamicEntityField Id="e5f3a906-29ad-f011-8e61-0022489e60c3" Name="VirtualName">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">NotAllocated</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="e5b1668d-3e9f-f011-b3cd-002248a46af2" Name="VirtualSessionID">
+                                              <udam:DynamicEntityField.ArgumentValue>
+                                                <InArgument x:TypeArguments="x:String">NotAllocated</InArgument>
+                                              </udam:DynamicEntityField.ArgumentValue>
+                                            </udam:DynamicEntityField>
+                                            <udam:DynamicEntityField Id="8fa0836b-29ad-f011-8e61-0022489e60c3" Name="VirtualStart" />
+                                          </scg:List>
+                                        </udam:RecordState.SelectedFields>
+                                      </udam:RecordState>
+                                    </uda:CreateEntityRecord.State>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </uda:CreateEntityRecord>
+                                </TryCatch.Try>
+                                <TryCatch.Catches>
+                                  <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+                                    <ActivityAction x:TypeArguments="s:Exception">
+                                      <ActivityAction.Argument>
+                                        <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                      </ActivityAction.Argument>
+                                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,234" sap2010:WorkflowViewState.IdRef="Sequence_51">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,170" sap2010:WorkflowViewState.IdRef="LogMessage_15" Message="[&quot;failed &quot; + Users.AsEnumerable.First(function(r) r(&quot;Worker_Email_Address&quot;).ToString.ToLower.Trim = CurrentRow(0).ToString.ToLower.Trim)(&quot;Worker_ID&quot;).ToString]" />
+                                      </Sequence>
+                                    </ActivityAction>
+                                  </Catch>
+                                </TryCatch.Catches>
+                                <TryCatch.Finally>
+                                  <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="450,94" sap2010:WorkflowViewState.IdRef="Sequence_52">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </Sequence>
+                                </TryCatch.Finally>
+                              </TryCatch>
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="522,405" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="488,179" sap2010:WorkflowViewState.IdRef="LogMessage_13" Message="[&quot;Not found &quot; + CurrentRow(0).ToString]" />
+                        <ui:AppendLine File="{x:Null}" DisplayName="Append Line" FileName="failed.txt" sap:VirtualizedContainerService.HintSize="488,162" sap2010:WorkflowViewState.IdRef="AppendLine_1" Text="[CurrentRow(0).ToString]" UseDefaultEncoding="False" />
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEachRow.Body>
+          </ui:ForEachRow>
+        </Sequence>
+      </ui:CommentOut.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-    </ui:ForEach>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="630,48" sap2010:WorkflowViewState.IdRef="CommentOut_10">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="558,2702" sap2010:WorkflowViewState.IdRef="Sequence_43">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:BuildDataTable DataTable="[outputDT]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="524,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Email&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Status&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[DT]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="524,2411" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+            <ui:ForEachRow.Body>
+              <ActivityAction x:TypeArguments="sd:DataRow">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="522,2229" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uda:QueryEntityRecords x:TypeArguments="n:NewHireManagementEmployee" TotalRecords="{x:Null}" ContinueOnError="False" DisplayName="Query Entity Records" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="488,184" sap2010:WorkflowViewState.IdRef="QueryEntityRecords`1_4" OutputRecords="[Records]" QueriedEntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" Skip="0" SortAscending="True" SortByField="Id" TimeoutInMs="30000" Top="100">
+                    <uda:QueryEntityRecords.FilterArguments>
+                      <uda:FilterArgument FilterActivityType="{x:Null}">
+                        <uda:FilterArgument.Filter>
+                          <uda:GroupFilter Index="0" Operator="AND">
+                            <uda:GroupFilter.Filters>
+                              <scg:List x:TypeArguments="uda:SimpleFilter" Capacity="4">
+                                <uda:SimpleFilter ExpressionValue="{x:Null}" FieldName="Email" FieldType="UiPath.DataService.Core.Models.EntityField" Operator="=" ValueIndex="0" />
+                              </scg:List>
+                            </uda:GroupFilter.Filters>
+                            <uda:GroupFilter.Groups>
+                              <scg:List x:TypeArguments="uda:GroupFilter" Capacity="0" />
+                            </uda:GroupFilter.Groups>
+                          </uda:GroupFilter>
+                        </uda:FilterArgument.Filter>
+                      </uda:FilterArgument>
+                    </uda:QueryEntityRecords.FilterArguments>
+                    <uda:QueryEntityRecords.FilterValues>
+                      <scg:List x:TypeArguments="InArgument" Capacity="4">
+                        <InArgument x:TypeArguments="x:String">[CurrentRow(0).ToString]</InArgument>
+                      </scg:List>
+                    </uda:QueryEntityRecords.FilterValues>
+                  </uda:QueryEntityRecords>
+                  <If Condition="[Records.Count = 0]" sap:VirtualizedContainerService.HintSize="488,1981" sap2010:WorkflowViewState.IdRef="If_10">
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="486,459" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="452,179" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Warn" Message="[CurrentRow(0).ToString + &quot; not found - &quot; + CurrentRow(1).ToString]" />
+                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{CurrentRow(0).ToString,if(CurrentRow(1).ToString.ToLower.Contains(&quot;progress&quot;),&quot;NotDone&quot;,&quot;Done&quot;)}]" DataTable="[outputDT]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="452,216" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="486,1388" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="452,179" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[CurrentRow(0).ToString + &quot; &quot; + CurrentRow(1).ToString+&quot;-&quot; + Records(0).BootCampDone.ToString + &quot;-&quot; + Records(0).VirtualDone.ToString]" />
+                        <If Condition="[CurrentRow(1).ToString.ToLower.Contains(&quot;progress&quot;)]" sap:VirtualizedContainerService.HintSize="452,1145" sap2010:WorkflowViewState.IdRef="If_12">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,116" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <uda:UpdateEntityRecord x:TypeArguments="n:NewHireManagementEmployee" InputEntity="{x:Null}" IsInRecordView="{x:Null}" OutputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Update Entity Record" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="UpdateEntityRecord`1_4" InputEntityInFieldView="[new NH02_ProcessNewEmployee.NewHireManagementEmployee() With {  .BootCampDone = false,  .BootcampFilesDone = false,  .BootcampName = &quot;NotAllocated&quot;,  .BootCampSessionID = &quot;NotAllocated&quot;,  .VirtualDone = false,  .VirtualName = &quot;NotAllocated&quot;,  .VirtualSessionID = &quot;NotAllocated&quot;, .Id = Records(0).id }]" RecordId="[Records(0).id]" TimeoutInMs="30000">
+                                <uda:UpdateEntityRecord.State>
+                                  <udam:RecordState RequiredFieldCount="1">
+                                    <udam:RecordState.SelectedFields>
+                                      <scg:List x:TypeArguments="udam:DynamicEntityField" Capacity="7">
+                                        <udam:DynamicEntityField Id="ecb1668d-3e9f-f011-b3cd-002248a46af2" Name="BootCampDone">
+                                          <udam:DynamicEntityField.ArgumentValue>
+                                            <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                          </udam:DynamicEntityField.ArgumentValue>
+                                        </udam:DynamicEntityField>
+                                        <udam:DynamicEntityField Id="c09adba8-419f-f011-b3cd-002248a46af2" Name="BootcampFilesDone">
+                                          <udam:DynamicEntityField.ArgumentValue>
+                                            <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                          </udam:DynamicEntityField.ArgumentValue>
+                                        </udam:DynamicEntityField>
+                                        <udam:DynamicEntityField Id="e9eecf65-34ad-f011-8e61-0022489e60c3" Name="BootcampName">
+                                          <udam:DynamicEntityField.ArgumentValue>
+                                            <InArgument x:TypeArguments="x:String">NotAllocated</InArgument>
+                                          </udam:DynamicEntityField.ArgumentValue>
+                                        </udam:DynamicEntityField>
+                                        <udam:DynamicEntityField Id="e9b1668d-3e9f-f011-b3cd-002248a46af2" Name="BootCampSessionID">
+                                          <udam:DynamicEntityField.ArgumentValue>
+                                            <InArgument x:TypeArguments="x:String">NotAllocated</InArgument>
+                                          </udam:DynamicEntityField.ArgumentValue>
+                                        </udam:DynamicEntityField>
+                                        <udam:DynamicEntityField Id="e8b1668d-3e9f-f011-b3cd-002248a46af2" Name="VirtualDone">
+                                          <udam:DynamicEntityField.ArgumentValue>
+                                            <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                          </udam:DynamicEntityField.ArgumentValue>
+                                        </udam:DynamicEntityField>
+                                        <udam:DynamicEntityField Id="e5f3a906-29ad-f011-8e61-0022489e60c3" Name="VirtualName">
+                                          <udam:DynamicEntityField.ArgumentValue>
+                                            <InArgument x:TypeArguments="x:String">NotAllocated</InArgument>
+                                          </udam:DynamicEntityField.ArgumentValue>
+                                        </udam:DynamicEntityField>
+                                        <udam:DynamicEntityField Id="e5b1668d-3e9f-f011-b3cd-002248a46af2" Name="VirtualSessionID">
+                                          <udam:DynamicEntityField.ArgumentValue>
+                                            <InArgument x:TypeArguments="x:String">NotAllocated</InArgument>
+                                          </udam:DynamicEntityField.ArgumentValue>
+                                        </udam:DynamicEntityField>
+                                      </scg:List>
+                                    </udam:RecordState.SelectedFields>
+                                  </udam:RecordState>
+                                </uda:UpdateEntityRecord.State>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </uda:UpdateEntityRecord>
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,895" sap2010:WorkflowViewState.IdRef="Sequence_39">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <uda:UpdateEntityRecord x:TypeArguments="n:NewHireManagementEmployee" InputEntity="{x:Null}" IsInRecordView="{x:Null}" OutputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Update Entity Record" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="416,831" sap2010:WorkflowViewState.IdRef="UpdateEntityRecord`1_5" InputEntityInFieldView="[new NH02_ProcessNewEmployee.NewHireManagementEmployee() With {  .BootCampDone = true,  .BootcampFilesDone = true,  .BootcampName = &quot;Done&quot;,  .BootCampSessionID = &quot;Done&quot;,  .BuddyDone = true,  .CourseDone = true,  .HRDone = true,  .HRInitialMessage = true,  .ManagerDone = true,  .VirtualDone = true,  .VirtualName = &quot;Done&quot;,  .VirtualSessionID = &quot;Done&quot;, .Id = Records(0).id }]" RecordId="[Records(0).id]" TimeoutInMs="30000">
+                                <uda:UpdateEntityRecord.State>
+                                  <udam:RecordState RequiredFieldCount="1">
+                                    <udam:RecordState.SelectedFields>
+                                      <scg:List x:TypeArguments="udam:DynamicEntityField" Capacity="12">
+                                        <udam:DynamicEntityField Id="ecb1668d-3e9f-f011-b3cd-002248a46af2" Name="BootCampDone">
+                                          <udam:DynamicEntityField.ArgumentValue>
+                                            <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                          </udam:DynamicEntityField.ArgumentValue>
+                                        </udam:DynamicEntityField>
+                                        <udam:DynamicEntityField Id="c09adba8-419f-f011-b3cd-002248a46af2" Name="BootcampFilesDone">
+                                          <udam:DynamicEntityField.ArgumentValue>
+                                            <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                          </udam:DynamicEntityField.ArgumentValue>
+                                        </udam:DynamicEntityField>
+                                        <udam:DynamicEntityField Id="e9eecf65-34ad-f011-8e61-0022489e60c3" Name="BootcampName">
+                                          <udam:DynamicEntityField.ArgumentValue>
+                                            <InArgument x:TypeArguments="x:String">Done</InArgument>
+                                          </udam:DynamicEntityField.ArgumentValue>
+                                        </udam:DynamicEntityField>
+                                        <udam:DynamicEntityField Id="e9b1668d-3e9f-f011-b3cd-002248a46af2" Name="BootCampSessionID">
+                                          <udam:DynamicEntityField.ArgumentValue>
+                                            <InArgument x:TypeArguments="x:String">Done</InArgument>
+                                          </udam:DynamicEntityField.ArgumentValue>
+                                        </udam:DynamicEntityField>
+                                        <udam:DynamicEntityField Id="ddb1668d-3e9f-f011-b3cd-002248a46af2" Name="BuddyDone">
+                                          <udam:DynamicEntityField.ArgumentValue>
+                                            <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                          </udam:DynamicEntityField.ArgumentValue>
+                                        </udam:DynamicEntityField>
+                                        <udam:DynamicEntityField Id="f6b1668d-3e9f-f011-b3cd-002248a46af2" Name="CourseDone">
+                                          <udam:DynamicEntityField.ArgumentValue>
+                                            <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                          </udam:DynamicEntityField.ArgumentValue>
+                                        </udam:DynamicEntityField>
+                                        <udam:DynamicEntityField Id="e1b1668d-3e9f-f011-b3cd-002248a46af2" Name="HRDone">
+                                          <udam:DynamicEntityField.ArgumentValue>
+                                            <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                          </udam:DynamicEntityField.ArgumentValue>
+                                        </udam:DynamicEntityField>
+                                        <udam:DynamicEntityField Id="961e424a-2bf8-f011-8d4c-000d3add7f02" Name="HRInitialMessage">
+                                          <udam:DynamicEntityField.ArgumentValue>
+                                            <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                          </udam:DynamicEntityField.ArgumentValue>
+                                        </udam:DynamicEntityField>
+                                        <udam:DynamicEntityField Id="e4b1668d-3e9f-f011-b3cd-002248a46af2" Name="ManagerDone">
+                                          <udam:DynamicEntityField.ArgumentValue>
+                                            <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                          </udam:DynamicEntityField.ArgumentValue>
+                                        </udam:DynamicEntityField>
+                                        <udam:DynamicEntityField Id="e8b1668d-3e9f-f011-b3cd-002248a46af2" Name="VirtualDone">
+                                          <udam:DynamicEntityField.ArgumentValue>
+                                            <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                          </udam:DynamicEntityField.ArgumentValue>
+                                        </udam:DynamicEntityField>
+                                        <udam:DynamicEntityField Id="e5f3a906-29ad-f011-8e61-0022489e60c3" Name="VirtualName">
+                                          <udam:DynamicEntityField.ArgumentValue>
+                                            <InArgument x:TypeArguments="x:String">Done</InArgument>
+                                          </udam:DynamicEntityField.ArgumentValue>
+                                        </udam:DynamicEntityField>
+                                        <udam:DynamicEntityField Id="e5b1668d-3e9f-f011-b3cd-002248a46af2" Name="VirtualSessionID">
+                                          <udam:DynamicEntityField.ArgumentValue>
+                                            <InArgument x:TypeArguments="x:String">Done</InArgument>
+                                          </udam:DynamicEntityField.ArgumentValue>
+                                        </udam:DynamicEntityField>
+                                      </scg:List>
+                                    </udam:RecordState.SelectedFields>
+                                  </udam:RecordState>
+                                </uda:UpdateEntityRecord.State>
+                              </uda:UpdateEntityRecord>
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEachRow.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ForEachRow>
+          <ui:WriteRange StartingCell="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[outputDT]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="524,139" sap2010:WorkflowViewState.IdRef="WriteRange_2" SheetName="Sheet2" WorkbookPath="Data\completed bootcamps 29 jan.xlsx" />
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
   </Sequence>
 </Activity>
