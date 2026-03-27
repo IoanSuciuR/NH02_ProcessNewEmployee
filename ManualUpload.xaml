@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="ManualUpload" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ManualUpload_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:n="clr-namespace:NH02_ProcessNewEmployee;assembly=DataService.NH02_ProcessNewEmployee" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:uda="clr-namespace:UiPath.DataService.Activities;assembly=UiPath.DataService.Activities.Core" xmlns:udam="clr-namespace:UiPath.DataService.Activities.Models;assembly=UiPath.DataService.Activities.Core" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="ManualUpload" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ManualUpload_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:n="clr-namespace:NH02_ProcessNewEmployee;assembly=DataService.NH02_ProcessNewEmployee" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:uda="clr-namespace:UiPath.DataService.Activities;assembly=UiPath.DataService.Activities.Core" xmlns:udam="clr-namespace:UiPath.DataService.Activities.Models;assembly=UiPath.DataService.Activities.Core" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -109,446 +109,57 @@
       <AssemblyReference>DataService.NH02_ProcessNewEmployee</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ManualUpload" sap:VirtualizedContainerService.HintSize="1228,1373" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ManualUpload" sap:VirtualizedContainerService.HintSize="1683,979.6566666666666" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="DTInput" />
+      <Variable x:TypeArguments="scg:IList(n:NewHireManagementEmployee)" Name="Records" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="524,339" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="484,228" sap2010:WorkflowViewState.IdRef="Sequence_6">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[DTInput]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="450,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="All new hires bootcamps FY26" WorkbookPath="C:\Users\Asus\Desktop\All new hires.xlsx" />
-          <ueab:SequenceX DisplayName="Single Excel Process Scope" sap:VirtualizedContainerService.HintSize="450,48" sap2010:WorkflowViewState.IdRef="SequenceX_1">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" SensitivityLabel="{x:Null}" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="638,1117" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" ResizeWindow="None" SensitivityOperation="None" WorkbookPath="C:\Users\Asus\Desktop\All new hires.xlsx">
-              <ueab:ExcelApplicationCard.Body>
-                <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
-                  <ActivityAction.Argument>
-                    <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
-                  </ActivityAction.Argument>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="604,825" sap2010:WorkflowViewState.IdRef="Sequence_2">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <ueab:ExcelForEachRowX DisplayName="For Each Excel Row" EmptyRowBehavior="Stop" HasHeaders="True" sap:VirtualizedContainerService.HintSize="570,765" sap2010:WorkflowViewState.IdRef="ExcelForEachRowX_1" Range="[Excel.Sheet(&quot;AllNewHires&quot;)]" SaveAfterEachRow="False">
-                      <ueab:ExcelForEachRowX.Body>
-                        <ActivityAction x:TypeArguments="ue:CurrentRowQuickHandle, x:Int32">
-                          <ActivityAction.Argument1>
-                            <DelegateInArgument x:TypeArguments="ue:CurrentRowQuickHandle" Name="CurrentRow" />
-                          </ActivityAction.Argument1>
-                          <ActivityAction.Argument2>
-                            <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
-                          </ActivityAction.Argument2>
-                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="536,552" sap2010:WorkflowViewState.IdRef="Sequence_3">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                            <If Condition="[DTInput.AsEnumerable.Any(function(r) r(0).ToString.ToLower.Trim = CurrentRow(&quot;Worker_Email_Address&quot;).toString.ToLower.Trim)]" sap:VirtualizedContainerService.HintSize="502,492" sap2010:WorkflowViewState.IdRef="If_1">
-                              <If.Then>
-                                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,242" sap2010:WorkflowViewState.IdRef="Sequence_4">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <ueab:WriteCellX Cell="[CurrentRow.ByField(&quot;Bootcamp&quot;)]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="434,182" sap2010:WorkflowViewState.IdRef="WriteCellX_1" Value="[&quot;Done&quot;]" />
-                                </Sequence>
-                              </If.Then>
-                              <If.Else>
-                                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,89" sap2010:WorkflowViewState.IdRef="Sequence_5">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </Sequence>
-                              </If.Else>
-                            </If>
-                          </Sequence>
-                        </ActivityAction>
-                      </ueab:ExcelForEachRowX.Body>
-                    </ueab:ExcelForEachRowX>
-                  </Sequence>
-                </ActivityAction>
-              </ueab:ExcelApplicationCard.Body>
-            </ueab:ExcelApplicationCard>
-          </ueab:SequenceX>
-        </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
-    <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[DTInput]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="524,120" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="AllNewHires" WorkbookPath="C:\Users\Asus\Desktop\All new hires.xlsx" />
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[DTInput]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="524,891" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
-      <ui:ForEachRow.Body>
-        <ActivityAction x:TypeArguments="sd:DataRow">
+    <uda:QueryEntityRecords x:TypeArguments="n:NewHireManagementEmployee" FilterArguments="{x:Null}" FilterValues="{x:Null}" TotalRecords="{x:Null}" ContinueOnError="False" DisplayName="Query Entity Records" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="452,180" sap2010:WorkflowViewState.IdRef="QueryEntityRecords`1_1" OutputRecords="[Records]" QueriedEntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" Skip="0" SortAscending="True" SortByField="Id" TimeoutInMs="30000" Top="100" />
+    <ui:ForEach x:TypeArguments="n:NewHireManagementEmployee" CurrentIndex="{x:Null}" DisplayName="For Each currentNewHireManagementEmployee" sap:VirtualizedContainerService.HintSize="452,549" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Records]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="n:NewHireManagementEmployee">
           <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+            <DelegateInArgument x:TypeArguments="n:NewHireManagementEmployee" Name="currentNewHireManagementEmployee" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="490,704" sap2010:WorkflowViewState.IdRef="Sequence_11">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,427" sap2010:WorkflowViewState.IdRef="Sequence_14">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="456,644" sap2010:WorkflowViewState.IdRef="TryCatch_1">
-              <TryCatch.Try>
-                <uda:CreateEntityRecord x:TypeArguments="n:NewHireManagementEmployee" InputEntity="{x:Null}" IsInRecordView="{x:Null}" OutputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Create Entity Record" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="400,25" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_1" InputEntityInFieldView="[new NH02_ProcessNewEmployee.NewHireManagementEmployee() With {  .EmployeeID = CurrentRow(&quot;Worker_ID&quot;).ToString,  .BootCampDone = if(string.IsNullOrEmpty(CurrentRow(&quot;Bootcamp&quot;).ToString),False,True),  .BootCampDoneTime = if(string.IsNullOrEmpty(CurrentRow(&quot;Bootcamp&quot;).ToString),Date.Parse(&quot;12/31/2025&quot;),Nothing),  .BootcampExtraFiles = &quot;&quot;,  .BootcampFilesCheckConfirm = if(string.IsNullOrEmpty(CurrentRow(&quot;Bootcamp&quot;).ToString),False,True),  .BootcampFilesDone = if(string.IsNullOrEmpty(CurrentRow(&quot;Bootcamp&quot;).ToString),False,True),  .BootcampFilesDoneTime = if(string.IsNullOrEmpty(CurrentRow(&quot;Bootcamp&quot;).ToString),&quot;12/31/2025&quot;,&quot;&quot;),  .BootcampFilesLastPing = if(string.IsNullOrEmpty(CurrentRow(&quot;Bootcamp&quot;).ToString),Date.Parse(&quot;12/31/2025&quot;),Nothing),  .BootcampFlightFile = &quot;&quot;,  .BootcampHotelFile = &quot;&quot;,  .BootcampManagerDM = if(string.IsNullOrEmpty(CurrentRow(&quot;Bootcamp&quot;).ToString),False,True),  .BootcampName = if(string.IsNullOrEmpty(CurrentRow(&quot;Bootcamp&quot;).ToString),&quot;&quot;,CurrentRow(&quot;Bootcamp&quot;).ToString),  .BootCampSessionID = if(string.IsNullOrEmpty(CurrentRow(&quot;Bootcamp&quot;).ToString),&quot;&quot;,CurrentRow(&quot;Bootcamp&quot;).ToString),  .BootcampSlackChannelName = if(string.IsNullOrEmpty(CurrentRow(&quot;Bootcamp&quot;).ToString),&quot;&quot;,CurrentRow(&quot;Bootcamp&quot;).ToString),  .BootcampStart = if(string.IsNullOrEmpty(CurrentRow(&quot;Bootcamp&quot;).ToString),Date.Parse(&quot;12/31/2025&quot;),Nothing),  .BuddyDone = if(CurrentRow(&quot;Buddy&quot;).ToString = &quot;Yes&quot;,True,False),  .BuddyDoneTime = if(CurrentRow(&quot;Buddy&quot;).ToString = &quot;Yes&quot;,Date.Parse(&quot;12/31/2025&quot;),Nothing),  .BuddyEmail = if(CurrentRow(&quot;Buddy&quot;).ToString = &quot;Yes&quot;,&quot;Done&quot;,&quot;&quot;),  .BuddyInitialMessage = if(CurrentRow(&quot;Buddy&quot;).ToString = &quot;Yes&quot;,True,False),  .BuddyLastPing = Date.Parse(&quot;12/31/2025&quot;),  .BuddyNextPing = Date.Parse(&quot;12/31/2025&quot;),  .BusinessSite = CurrentRow(&quot;Department&quot;).ToString,  .CostCenter = CurrentRow(&quot;Location_Name&quot;).ToString,  .CourseChapter = &quot;&quot;,  .CourseDone = if(CurrentRow(&quot;CourseCompletion&quot;).ToString = &quot;Yes&quot;,True,False),  .CourseEndDate = if(CurrentRow(&quot;CourseCompletion&quot;).ToString = &quot;Yes&quot;,Date.Parse(&quot;12/31/2025&quot;),Nothing),  .CourseLastPing = if(CurrentRow(&quot;CourseCompletion&quot;).ToString = &quot;Yes&quot;,Date.Parse(&quot;12/31/2025&quot;),Nothing),  .CourseNextPing = if(CurrentRow(&quot;CourseCompletion&quot;).ToString = &quot;Yes&quot;,Date.Parse(&quot;12/31/2025&quot;),Nothing),  .CoursePingDone = if(CurrentRow(&quot;CourseCompletion&quot;).ToString = &quot;Yes&quot;,True,False),  .CourseProgression = &quot;&quot;,  .CourseReminderCount = 1D,  .CourseStartDate = if(CurrentRow(&quot;CourseCompletion&quot;).ToString = &quot;Yes&quot;,Date.Parse(&quot;12/31/2025&quot;),Nothing),  .Email = CurrentRow(&quot;Worker_Email_Address&quot;).ToString,  .HireDate = Date.Parse(CurrentRow(&quot;Hire_Date&quot;).ToString),  .HRContact = CurrentRow(&quot;HR_Partner_Email&quot;).ToString,  .HRDone = if(CurrentRow(&quot;HRMeeting&quot;).ToString = &quot;Yes&quot;,True,False),  .HRDoneTine = if(CurrentRow(&quot;HRMeeting&quot;).ToString = &quot;Yes&quot;,Date.Parse(&quot;12/31/2025&quot;),Nothing),  .HRInitialMessage = if(CurrentRow(&quot;HRMeeting&quot;).ToString = &quot;Yes&quot;,True,False),  .HRLastPint = if(CurrentRow(&quot;HRMeeting&quot;).ToString = &quot;Yes&quot;,Date.Parse(&quot;12/31/2025&quot;),Nothing),  .HRNextPing = if(CurrentRow(&quot;HRMeeting&quot;).ToString = &quot;Yes&quot;,Date.Parse(&quot;12/31/2025&quot;),Nothing),  .JobTitle = CurrentRow(&quot;Job_Title&quot;).toString,  .Manager = CurrentRow(&quot;Manager_Name&quot;).toString,  .ManagerDone = if(CurrentRow(&quot;ManagerIntro&quot;).ToString = &quot;Yes&quot;,True,False),  .ManagerDoneTime = if(CurrentRow(&quot;ManagerIntro&quot;).ToString = &quot;Yes&quot;,Date.Parse(&quot;12/31/2025&quot;),Nothing),  .ManagerEmail = CurrentRow(&quot;Manager_Email&quot;).toString,  .ManagerInitialMessage = if(CurrentRow(&quot;ManagerIntro&quot;).ToString = &quot;Yes&quot;,True,False),  .ManagerLastPing = if(CurrentRow(&quot;ManagerIntro&quot;).ToString = &quot;Yes&quot;,Date.Parse(&quot;12/31/2025&quot;),Nothing),  .ManagerNextPing = if(CurrentRow(&quot;ManagerIntro&quot;).ToString = &quot;Yes&quot;,Date.Parse(&quot;12/31/2025&quot;),Nothing),  .Name = CurrentRow(&quot;Legal_Full_Name&quot;).ToString,  .NewHireInitialDM = true,  .Organization = CurrentRow(&quot;Supervisory_Organization&quot;).ToString,  .VirtualDone = if(string.IsNullOrEmpty(CurrentRow(&quot;VirtualSession&quot;).ToString),False,True),  .VirtualDoneTime = if(string.IsNullOrEmpty(CurrentRow(&quot;VirtualSession&quot;).ToString),Date.Parse(&quot;12/31/2025&quot;),Nothing),  .VirtualLastPing = if(string.IsNullOrEmpty(CurrentRow(&quot;VirtualSession&quot;).ToString),Date.Parse(&quot;12/31/2025&quot;),Nothing),  .VirtualName = if(string.IsNullOrEmpty(CurrentRow(&quot;VirtualSession&quot;).ToString),&quot;&quot;,&quot;Done&quot;),  .VirtualSessionID = if(string.IsNullOrEmpty(CurrentRow(&quot;VirtualSession&quot;).ToString),&quot;&quot;,&quot;Done&quot;),  .VirtualStart = if(string.IsNullOrEmpty(CurrentRow(&quot;VirtualSession&quot;).ToString),Date.Parse(&quot;12/31/2025&quot;),Nothing) }]" TimeoutInMs="30000">
-                  <uda:CreateEntityRecord.State>
-                    <udam:RecordState RequiredFieldCount="1">
-                      <udam:RecordState.SelectedFields>
-                        <scg:List x:TypeArguments="udam:DynamicEntityField" Capacity="57">
-                          <udam:DynamicEntityField Id="d1b1668d-3e9f-f011-b3cd-002248a46af2" IsRequired="True" Name="EmployeeID">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:String">[CurrentRow("Worker_ID").ToString]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="ecb1668d-3e9f-f011-b3cd-002248a46af2" Name="BootCampDone">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:Boolean">[if(string.IsNullOrEmpty(CurrentRow("Bootcamp").ToString),False,True)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="eab1668d-3e9f-f011-b3cd-002248a46af2" Name="BootCampDoneTime">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="s:DateTime">[if(string.IsNullOrEmpty(CurrentRow("Bootcamp").ToString),Date.Parse("12/31/2025"),Nothing)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="bd9adba8-419f-f011-b3cd-002248a46af2" Name="BootcampExtraFiles">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:String">
-                                <Literal x:TypeArguments="x:String" Value="" />
-                              </InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="c19adba8-419f-f011-b3cd-002248a46af2" Name="BootcampFilesCheckConfirm">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:Boolean">[if(string.IsNullOrEmpty(CurrentRow("Bootcamp").ToString),False,True)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="c09adba8-419f-f011-b3cd-002248a46af2" Name="BootcampFilesDone">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:Boolean">[if(string.IsNullOrEmpty(CurrentRow("Bootcamp").ToString),False,True)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="be9adba8-419f-f011-b3cd-002248a46af2" Name="BootcampFilesDoneTime">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:String">[if(string.IsNullOrEmpty(CurrentRow("Bootcamp").ToString),"12/31/2025","")]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="f6d0ebb0-55aa-f011-8e61-0022489e60c3" Name="BootcampFilesLastPing">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="s:DateTime">[if(string.IsNullOrEmpty(CurrentRow("Bootcamp").ToString),Date.Parse("12/31/2025"),Nothing)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="bb9adba8-419f-f011-b3cd-002248a46af2" Name="BootcampFlightFile">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:String">
-                                <Literal x:TypeArguments="x:String" Value="" />
-                              </InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="bc9adba8-419f-f011-b3cd-002248a46af2" Name="BootcampHotelFile">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:String">
-                                <Literal x:TypeArguments="x:String" Value="" />
-                              </InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="c9e4fd84-21f8-f011-8d4c-000d3add7f02" Name="BootcampManagerDM">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:Boolean">[if(string.IsNullOrEmpty(CurrentRow("Bootcamp").ToString),False,True)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="e9eecf65-34ad-f011-8e61-0022489e60c3" Name="BootcampName">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:String">[if(string.IsNullOrEmpty(CurrentRow("Bootcamp").ToString),"",CurrentRow("Bootcamp").ToString)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="e9b1668d-3e9f-f011-b3cd-002248a46af2" Name="BootCampSessionID">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:String">[if(string.IsNullOrEmpty(CurrentRow("Bootcamp").ToString),"",CurrentRow("Bootcamp").ToString)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="93a75fa0-54aa-f011-8e61-0022489e60c3" Name="BootcampSlackChannelName">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:String">[if(string.IsNullOrEmpty(CurrentRow("Bootcamp").ToString),"",CurrentRow("Bootcamp").ToString)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="eaeecf65-34ad-f011-8e61-0022489e60c3" Name="BootcampStart">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="s:DateTime">[if(string.IsNullOrEmpty(CurrentRow("Bootcamp").ToString),Date.Parse("12/31/2025"),Nothing)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="ddb1668d-3e9f-f011-b3cd-002248a46af2" Name="BuddyDone">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:Boolean">[if(CurrentRow("Buddy").ToString = "Yes",True,False)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="dbb1668d-3e9f-f011-b3cd-002248a46af2" Name="BuddyDoneTime">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="s:DateTime">[if(CurrentRow("Buddy").ToString = "Yes",Date.Parse("12/31/2025"),Nothing)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="dab1668d-3e9f-f011-b3cd-002248a46af2" Name="BuddyEmail">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:String">[if(CurrentRow("Buddy").ToString = "Yes","Done","")]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="951e424a-2bf8-f011-8d4c-000d3add7f02" Name="BuddyInitialMessage">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:Boolean">[if(CurrentRow("Buddy").ToString = "Yes",True,False)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="dcb1668d-3e9f-f011-b3cd-002248a46af2" Name="BuddyLastPing">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="s:DateTime">[Date.Parse("12/31/2025")]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="e513bd96-29f8-f011-8d4c-000d3add7f02" Name="BuddyNextPing">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="s:DateTime">[Date.Parse("12/31/2025")]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="d9b1668d-3e9f-f011-b3cd-002248a46af2" Name="BusinessSite">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:String">[CurrentRow("Department").ToString]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="d8b1668d-3e9f-f011-b3cd-002248a46af2" Name="CostCenter">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:String">[CurrentRow("Location_Name").ToString]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="f2b1668d-3e9f-f011-b3cd-002248a46af2" Name="CourseChapter">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:String">
-                                <Literal x:TypeArguments="x:String" Value="" />
-                              </InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="f6b1668d-3e9f-f011-b3cd-002248a46af2" Name="CourseDone">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:Boolean">[if(CurrentRow("CourseCompletion").ToString = "Yes",True,False)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="f4b1668d-3e9f-f011-b3cd-002248a46af2" Name="CourseEndDate">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="s:DateTime">[if(CurrentRow("CourseCompletion").ToString = "Yes",Date.Parse("12/31/2025"),Nothing)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="f5b1668d-3e9f-f011-b3cd-002248a46af2" Name="CourseLastPing">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="s:DateTime">[if(CurrentRow("CourseCompletion").ToString = "Yes",Date.Parse("12/31/2025"),Nothing)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="3509d6f3-1bf8-f011-8d4c-000d3add7f02" Name="CourseNextPing">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="s:DateTime">[if(CurrentRow("CourseCompletion").ToString = "Yes",Date.Parse("12/31/2025"),Nothing)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="3609d6f3-1bf8-f011-8d4c-000d3add7f02" Name="CoursePingDone">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:Boolean">[if(CurrentRow("CourseCompletion").ToString = "Yes",True,False)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="f1b1668d-3e9f-f011-b3cd-002248a46af2" Name="CourseProgression">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:String">
-                                <Literal x:TypeArguments="x:String" Value="" />
-                              </InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="1a027fe7-1ef8-f011-8d4c-000d3add7f02" Name="CourseReminderCount">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:Decimal">1</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="f3b1668d-3e9f-f011-b3cd-002248a46af2" Name="CourseStartDate">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="s:DateTime">[if(CurrentRow("CourseCompletion").ToString = "Yes",Date.Parse("12/31/2025"),Nothing)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="d4b1668d-3e9f-f011-b3cd-002248a46af2" Name="Email">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:String">[CurrentRow("Worker_Email_Address").ToString]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="d2b1668d-3e9f-f011-b3cd-002248a46af2" Name="HireDate">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="s:DateTime">[Date.Parse(CurrentRow("Hire_Date").ToString)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="deb1668d-3e9f-f011-b3cd-002248a46af2" Name="HRContact">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:String">[CurrentRow("HR_Partner_Email").ToString]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="e1b1668d-3e9f-f011-b3cd-002248a46af2" Name="HRDone">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:Boolean">[if(CurrentRow("HRMeeting").ToString = "Yes",True,False)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="dfb1668d-3e9f-f011-b3cd-002248a46af2" Name="HRDoneTine">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="s:DateTime">[if(CurrentRow("HRMeeting").ToString = "Yes",Date.Parse("12/31/2025"),Nothing)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="961e424a-2bf8-f011-8d4c-000d3add7f02" Name="HRInitialMessage">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:Boolean">[if(CurrentRow("HRMeeting").ToString = "Yes",True,False)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="e0b1668d-3e9f-f011-b3cd-002248a46af2" Name="HRLastPint">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="s:DateTime">[if(CurrentRow("HRMeeting").ToString = "Yes",Date.Parse("12/31/2025"),Nothing)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="4de50396-1df8-f011-8d4c-000d3add7f02" Name="HRNextPing">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="s:DateTime">[if(CurrentRow("HRMeeting").ToString = "Yes",Date.Parse("12/31/2025"),Nothing)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="d3b1668d-3e9f-f011-b3cd-002248a46af2" Name="JobTitle">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:String">[CurrentRow("Job_Title").toString]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="d5b1668d-3e9f-f011-b3cd-002248a46af2" Name="Manager">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:String">[CurrentRow("Manager_Name").toString]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="e4b1668d-3e9f-f011-b3cd-002248a46af2" Name="ManagerDone">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:Boolean">[if(CurrentRow("ManagerIntro").ToString = "Yes",True,False)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="e2b1668d-3e9f-f011-b3cd-002248a46af2" Name="ManagerDoneTime">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="s:DateTime">[if(CurrentRow("ManagerIntro").ToString = "Yes",Date.Parse("12/31/2025"),Nothing)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="d6b1668d-3e9f-f011-b3cd-002248a46af2" Name="ManagerEmail">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:String">[CurrentRow("Manager_Email").toString]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="941e424a-2bf8-f011-8d4c-000d3add7f02" Name="ManagerInitialMessage">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:Boolean">[if(CurrentRow("ManagerIntro").ToString = "Yes",True,False)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="e3b1668d-3e9f-f011-b3cd-002248a46af2" Name="ManagerLastPing">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="s:DateTime">[if(CurrentRow("ManagerIntro").ToString = "Yes",Date.Parse("12/31/2025"),Nothing)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="4ce50396-1df8-f011-8d4c-000d3add7f02" Name="ManagerNextPing">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="s:DateTime">[if(CurrentRow("ManagerIntro").ToString = "Yes",Date.Parse("12/31/2025"),Nothing)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="d0b1668d-3e9f-f011-b3cd-002248a46af2" Name="Name">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:String">[CurrentRow("Legal_Full_Name").ToString]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="e7739317-f5a7-f011-8e61-0022489e60c3" Name="NewHireInitialDM">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:Boolean">True</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="d7b1668d-3e9f-f011-b3cd-002248a46af2" Name="Organization">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:String">[CurrentRow("Supervisory_Organization").ToString]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="e8b1668d-3e9f-f011-b3cd-002248a46af2" Name="VirtualDone">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:Boolean">[if(string.IsNullOrEmpty(CurrentRow("VirtualSession").ToString),False,True)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="e6b1668d-3e9f-f011-b3cd-002248a46af2" Name="VirtualDoneTime">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="s:DateTime">[if(string.IsNullOrEmpty(CurrentRow("VirtualSession").ToString),Date.Parse("12/31/2025"),Nothing)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="e7b1668d-3e9f-f011-b3cd-002248a46af2" Name="VirtualLastPing">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="s:DateTime">[if(string.IsNullOrEmpty(CurrentRow("VirtualSession").ToString),Date.Parse("12/31/2025"),Nothing)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="e5f3a906-29ad-f011-8e61-0022489e60c3" Name="VirtualName">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:String">[if(string.IsNullOrEmpty(CurrentRow("VirtualSession").ToString),"","Done")]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="e5b1668d-3e9f-f011-b3cd-002248a46af2" Name="VirtualSessionID">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="x:String">[if(string.IsNullOrEmpty(CurrentRow("VirtualSession").ToString),"","Done")]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                          <udam:DynamicEntityField Id="8fa0836b-29ad-f011-8e61-0022489e60c3" Name="VirtualStart">
-                            <udam:DynamicEntityField.ArgumentValue>
-                              <InArgument x:TypeArguments="s:DateTime">[if(string.IsNullOrEmpty(CurrentRow("VirtualSession").ToString),Date.Parse("12/31/2025"),Nothing)]</InArgument>
-                            </udam:DynamicEntityField.ArgumentValue>
-                          </udam:DynamicEntityField>
-                        </scg:List>
-                      </udam:RecordState.SelectedFields>
-                    </udam:RecordState>
-                  </uda:CreateEntityRecord.State>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </uda:CreateEntityRecord>
-              </TryCatch.Try>
-              <TryCatch.Catches>
-                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="422,459" sap2010:WorkflowViewState.IdRef="Catch`1_1">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ActivityAction x:TypeArguments="s:Exception">
-                    <ActivityAction.Argument>
-                      <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
-                    </ActivityAction.Argument>
-                    <Sequence sap:VirtualizedContainerService.HintSize="416,389" sap2010:WorkflowViewState.IdRef="Sequence_12">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Failed for: &quot; + CurrentRow(&quot;Worker_ID&quot;).ToString]" />
-                      <ui:AppendLine File="{x:Null}" DisplayName="Append Line" FileName="failed.txt" sap:VirtualizedContainerService.HintSize="382,156" sap2010:WorkflowViewState.IdRef="AppendLine_1" Text="[CurrentRow(&quot;Worker_ID&quot;).ToString]" UseDefaultEncoding="False" />
-                    </Sequence>
-                  </ActivityAction>
-                </Catch>
-              </TryCatch.Catches>
-            </TryCatch>
+            <uda:UpdateEntityRecord x:TypeArguments="n:NewHireManagementEmployee" InputEntity="{x:Null}" IsInRecordView="{x:Null}" OutputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Update Entity Record" EntityId="c6b1668d-3e9f-f011-b3cd-002248a46af2" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="416,363" sap2010:WorkflowViewState.IdRef="UpdateEntityRecord`1_1" InputEntityInFieldView="[new NH02_ProcessNewEmployee.NewHireManagementEmployee() With {  .BuddyDone = true,  .ManagerDone = true,  .NewHireInitialDM = true, .Id = currentNewHireManagementEmployee.Id }]" RecordId="[currentNewHireManagementEmployee.Id]" TimeoutInMs="30000">
+              <uda:UpdateEntityRecord.State>
+                <udam:RecordState RequiredFieldCount="1">
+                  <udam:RecordState.SelectedFields>
+                    <scg:List x:TypeArguments="udam:DynamicEntityField" Capacity="3">
+                      <udam:DynamicEntityField Id="ddb1668d-3e9f-f011-b3cd-002248a46af2" Name="BuddyDone">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="e4b1668d-3e9f-f011-b3cd-002248a46af2" Name="ManagerDone">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                      <udam:DynamicEntityField Id="e7739317-f5a7-f011-8e61-0022489e60c3" Name="NewHireInitialDM">
+                        <udam:DynamicEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </udam:DynamicEntityField.ArgumentValue>
+                      </udam:DynamicEntityField>
+                    </scg:List>
+                  </udam:RecordState.SelectedFields>
+                </udam:RecordState>
+              </uda:UpdateEntityRecord.State>
+            </uda:UpdateEntityRecord>
           </Sequence>
         </ActivityAction>
-      </ui:ForEachRow.Body>
-    </ui:ForEachRow>
+      </ui:ForEach.Body>
+    </ui:ForEach>
   </Sequence>
 </Activity>

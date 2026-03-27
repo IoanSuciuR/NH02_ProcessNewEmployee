@@ -112,7 +112,7 @@
       <AssemblyReference>UiPath.System.Activities.Api</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="TestEntity" sap:VirtualizedContainerService.HintSize="841,6910" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="TestEntity" sap:VirtualizedContainerService.HintSize="1677,6910" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="Counter" />
       <Variable x:TypeArguments="sd:DataTable" Name="EmTable" />
